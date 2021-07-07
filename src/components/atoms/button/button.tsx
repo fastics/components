@@ -35,18 +35,31 @@ export type ButtonProps = {
    * @default dark
    */
   tint?: 'dark' | 'light';
+  /**
+   * Handles button click
+   */
+  onClick?: VoidFunction;
+  /**
+   * Use this this override styles
+   */
+  className?: string;
 } & (PrimaryButtonProps | SecondaryButtonProps);
 
 /**
  * Primary UI component for user interaction
  */
-export const Button: React.FC<ButtonProps> = ({ children, primary, tint }) => (
+export const Button: React.FC<ButtonProps> = ({ children, primary, tint, onClick, className }) => (
   <button
-    className={classNames(styles.wrapper, {
-      [styles.wrapper__primary]: primary,
-      [styles.wrapper__secondary]: !primary,
-      [styles.wrapper__primary__light]: primary && tint === 'light',
-    })}
+    onClick={onClick}
+    className={classNames(
+      styles.wrapper,
+      {
+        [styles.wrapper__primary]: primary,
+        [styles.wrapper__secondary]: !primary,
+        [styles.wrapper__primary__light]: primary && tint === 'light',
+      },
+      className,
+    )}
   >
     {children}
   </button>

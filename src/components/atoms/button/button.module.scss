@@ -40,9 +40,9 @@
  * It's white, with blue text and border color.
  */
 .wrapper__primary__light {
-  @extend .wrapper__secondary;
-
-  border: 0 !important;
+  background-color: variables.$white;
+  color: variables.$primaryLight;
+  border: 0;
 
   &:hover, &:active {
     background-color: variables.$primaryAlmostWhite;
