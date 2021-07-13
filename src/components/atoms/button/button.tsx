@@ -1,6 +1,7 @@
 import React, { ReactText } from 'react';
 import styles from './button.module.scss';
 import classNames from 'classnames';
+import Color from '../color';
 
 /**
  * If `primary` is set to `true`, it takes these props.
@@ -43,12 +44,23 @@ export type ButtonProps = {
    * Use this this override styles
    */
   className?: string;
+  /**
+   * Override color
+   */
+  color?: Color;
 } & (PrimaryButtonProps | SecondaryButtonProps);
 
 /**
  * Primary UI component for user interaction
  */
-export const Button: React.FC<ButtonProps> = ({ children, primary, tint, onClick, className }) => (
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  color,
+  primary,
+  tint,
+  onClick,
+  className,
+}) => (
   <button
     onClick={onClick}
     className={classNames(
@@ -60,6 +72,7 @@ export const Button: React.FC<ButtonProps> = ({ children, primary, tint, onClick
       },
       className,
     )}
+    style={color && { backgroundColor: color.toRGB() }}
   >
     {children}
   </button>

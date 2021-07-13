@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Link, Route, Switch } from 'react-router-dom';
+import { Button, Colors } from './components';
 
 const Home = () => (
   <div className="App">
@@ -11,6 +12,8 @@ const Home = () => (
         Edit <code>src/App.tsx</code> and save to reload.
       </p>
       <Link to="/toto">Learn React</Link>
+
+      <Button color={Colors.green[900]}>Hello, Click Me !</Button>
     </header>
   </div>
 );

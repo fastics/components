@@ -4,6 +4,7 @@ import styles from './button.stories.module.scss';
 
 import Button from './button';
 import { action } from '@storybook/addon-actions';
+import Color from '../color';
 
 export default {
   title: 'Atoms/Button',
@@ -34,7 +35,12 @@ Secondary.args = {
   primary: false,
 };
 
+export const CustomClassButton = Template.bind({});
+CustomClassButton.args = {
+  className: styles.custom_button,
+};
+
 export const CustomColorButton = Template.bind({});
 CustomColorButton.args = {
-  className: styles.custom_button,
+  color: Color.fromARGB(255, 200, 100, 100),
 };
