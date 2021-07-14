@@ -1,8 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+
 import { Button, Colors } from './components';
+import logo from './logo.svg';
 
 const Home = () => (
   <div className="App">

@@ -1,0 +1,17 @@
+.wrapper {
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover {
+    background-color: rgba(208, 208, 208, 0.21);
+  }
+
+  &__disabled {
+    cursor: not-allowed;
+    color: grey;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

@@ -1,9 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 
-import Colors from './colors';
 import Color from '../color';
-
+import Colors from './colors';
 import styles from './colors.stories.module.scss';
 
 const ColorComponent: React.FC<{ color: Color; value: string }> = ({ color, value }) => {

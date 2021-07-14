@@ -1,10 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
-import styles from './button.stories.module.scss';
-
-import Button from './button';
 import { action } from '@storybook/addon-actions';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
+
 import Color from '../color';
+import Button from './button';
+import styles from './button.stories.module.scss';
 
 export default {
   title: 'Atoms/Button',
@@ -25,6 +25,9 @@ Primary.args = {
 };
 
 export const PrimaryLight = Template.bind({});
+PrimaryLight.parameters = {
+  backgrounds: { default: 'dark' },
+};
 PrimaryLight.args = {
   primary: true,
   tint: 'light',

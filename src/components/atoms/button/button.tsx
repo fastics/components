@@ -1,7 +1,8 @@
 import React, { ReactText } from 'react';
-import styles from './button.module.scss';
-import classNames from 'classnames';
+import styled, { css } from 'styled-components';
+
 import Color from '../color';
+import * as styles from './button.styles';
 
 /**
  * If `primary` is set to `true`, it takes these props.
@@ -53,29 +54,23 @@ export type ButtonProps = {
 /**
  * Primary UI component for user interaction
  */
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  color,
-  primary,
-  tint,
-  onClick,
-  className,
-}) => (
-  <button
-    onClick={onClick}
-    className={classNames(
-      styles.wrapper,
-      {
-        [styles.wrapper__primary]: primary,
-        [styles.wrapper__secondary]: !primary,
-        [styles.wrapper__primary__light]: primary && tint === 'light',
-      },
-      className,
-    )}
-    style={color && { backgroundColor: color.toRGB() }}
-  >
+export const ButtonBase: React.FC<ButtonProps> = ({ children, onClick, className }) => (
+  <button onClick={onClick} className={className}>
     {children}
   </button>
 );
+
+export const Button = styled(ButtonBase)`
+  ${styles.basicStyles};
+
+  ${(props) => props.primary && styles.primaryStyles};
+  ${(props) => !props.primary && styles.secondaryStyles};
+  ${(props) => props.primary && props.tint === 'light' && styles.primaryLightStyles};
+  ${(props) =>
+    props.color &&
+    css`
+      background-color: ${props.color.toRGB()};
+    `};
+`;
 
 export default Button;
