@@ -12,9 +12,3 @@ export const theme = {
   darkGrey: new Color(0xff687997ff),
   mediumGrey: new Color(0xff8898b3),
 };
-
-const useTheme = () => {
-  return theme;
-};
-
-export default useTheme;

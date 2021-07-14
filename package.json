@@ -36,6 +36,7 @@
     "@storybook/node-logger": "^6.3.2",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.3.2",
+    "@testing-library/react-hooks": "^7.0.1",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.11",
     "eslint-plugin-prettier": "^3.4.0",
@@ -68,6 +69,15 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}": [
       "prettier --write"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!src/index.tsx",
+      "!src/logo.svg",
+      "!src/reportWebVitals.ts",
+      "!src/**/*.stories.tsx",
+      "!src/stories/*.*"
     ]
   }
 }

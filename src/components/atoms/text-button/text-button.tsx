@@ -41,6 +41,7 @@ export const TextButton: React.FC<TextButtonProps> = ({ onPress, children, class
     <div
       className={classNames(styles.wrapper, { [styles.wrapper__disabled]: !onPress }, className)}
       onClick={handleClick}
+      data-testid="text-button"
     >
       <span>{children}</span>
     </div>

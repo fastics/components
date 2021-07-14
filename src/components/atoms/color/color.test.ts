@@ -1,6 +1,11 @@
 import Color from './color';
 
 describe('Atoms/Color', () => {
+  it('should return correct string representation', () => {
+    const color = new Color(0xffffffff);
+    expect(color.toString()).toEqual('Color(0xffffffff)');
+  });
+
   it('should reject when incorrect value is passed', () => {
     expect(() => {
       Color.fromARGB(256, 255, 255, 255);
@@ -149,27 +154,90 @@ describe('Atoms/Color', () => {
     expect(colorDark.estimateBrightness()).toBe('dark');
   });
 
-  it('should return correct RGB from HSL with perfect red', () => {
-    const colorHSL = Color.fromHSL(0, 100, 50);
-    const colorRGBA = Color.fromARGB(255, 255, 0, 0);
+  describe('Red HSL', () => {
+    it('should return correct RGB from HSL with perfect red', () => {
+      const colorHSL = Color.fromHSL(0, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 255, 0, 0);
 
-    // @ts-expect-error
-    expect(colorHSL.value).toEqual(colorRGBA.value);
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+
+    it('should return correct RGB from HSL with darker red', () => {
+      const colorHSL = Color.fromHSL(0, 100, 40);
+      const colorRGBA = Color.fromARGB(255, 204, 0, 0);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+
+    it('should return correct RGB from HSL with less saturated red', () => {
+      const colorHSL = Color.fromHSL(0, 80, 40);
+      const colorRGBA = Color.fromARGB(255, 184, 20, 20);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
   });
 
-  it('should return correct RGB from HSL with darker red', () => {
-    const colorHSL = Color.fromHSL(0, 100, 40);
-    const colorRGBA = Color.fromARGB(255, 204, 0, 0);
+  describe('Green HSL', () => {
+    it('should return correct RGB from HSL with perfect green', () => {
+      const colorHSL = Color.fromHSL(120, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 0, 255, 0);
 
-    // @ts-expect-error
-    expect(colorHSL.value).toEqual(colorRGBA.value);
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+
+    it('should return correct RGB from HSL another green', () => {
+      const colorHSL = Color.fromHSL(100, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 85, 255, 0);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
   });
 
-  it('should return correct RGB from HSL with less saturated red', () => {
-    const colorHSL = Color.fromHSL(0, 80, 40);
-    const colorRGBA = Color.fromARGB(255, 184, 20, 20);
+  describe('Blue HSL', () => {
+    it('should return correct RGB from HSL with perfect blue', () => {
+      const colorHSL = Color.fromHSL(240, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 0, 0, 255);
 
-    // @ts-expect-error
-    expect(colorHSL.value).toEqual(colorRGBA.value);
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+
+    it('should return correct RGB from HSL turquoise', () => {
+      const colorHSL = Color.fromHSL(170, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 0, 255, 213);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+
+    it('should return correct RGB from HSL light blue', () => {
+      const colorHSL = Color.fromHSL(190, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 0, 213, 255);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+  });
+
+  describe('Pink HSL', () => {
+    it('should return correct RGB from HSL with pink', () => {
+      const colorHSL = Color.fromHSL(300, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 255, 0, 255);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
+    it('should return correct RGB from HSL with pink', () => {
+      const colorHSL = Color.fromHSL(310, 100, 50);
+      const colorRGBA = Color.fromARGB(255, 255, 0, 212);
+
+      // @ts-expect-error
+      expect(colorHSL.value).toEqual(colorRGBA.value);
+    });
   });
 });
