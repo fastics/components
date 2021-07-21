@@ -1,4 +1,4 @@
-import { ChangeEvent, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react';
 
 interface UseTextEditingControllerProps<B extends boolean> {
   initialValue?: string;

@@ -225,13 +225,14 @@ describe('Atoms/Color', () => {
   });
 
   describe('Pink HSL', () => {
-    it('should return correct RGB from HSL with pink', () => {
+    it('should return correct RGB from HSL with light pink', () => {
       const colorHSL = Color.fromHSL(300, 100, 50);
       const colorRGBA = Color.fromARGB(255, 255, 0, 255);
 
       // @ts-expect-error
       expect(colorHSL.value).toEqual(colorRGBA.value);
     });
+
     it('should return correct RGB from HSL with pink', () => {
       const colorHSL = Color.fromHSL(310, 100, 50);
       const colorRGBA = Color.fromARGB(255, 255, 0, 212);
