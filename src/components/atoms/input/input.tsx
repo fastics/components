@@ -2,11 +2,18 @@ import React from 'react';
 
 import useTextEditingController, { UseTextEditingController } from './useTextEditingController';
 
-interface TextFieldProps {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * If you want to control the input directly, pass in a controller.
+   * Use it like this
+   *
+   * @example
+   * const _controller = useTextEditingController({ listenValue: true });
+   */
   controller?: UseTextEditingController;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ controller }) => {
+export const Input: React.FC<InputProps> = ({ controller, ...props }) => {
   const _controller2 = useTextEditingController({ listenValue: false });
   const _controller = controller || _controller2;
 
@@ -16,8 +23,9 @@ const TextField: React.FC<TextFieldProps> = ({ controller }) => {
       onSelect={_controller.handleSelectionChange}
       onChange={_controller.handleChange}
       data-testid="text-field"
+      {...props}
     />
   );
 };
 
-export default TextField;
+export default Input;

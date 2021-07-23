@@ -9,4 +9,8 @@
 export { default as Button } from './button';
 export { default as Color } from './color';
 export { default as Colors } from './colors';
+export { default as Duration } from './duration';
+export { default as Icon } from './icon';
+export { default as Icons } from './icons';
+export { default as Input } from './input';
 export { default as TextButton } from './text-button';

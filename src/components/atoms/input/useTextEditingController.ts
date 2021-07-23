@@ -9,6 +9,14 @@ interface UseTextEditingControllerProps<B extends boolean> {
   listenValue?: B;
 }
 
+/**
+ * If you want to control the input, you can use this `useTextEditingController`.
+ * Use it like this :
+ * @example
+ * const _controller = useTextEditingController({ listenValue: true });
+ * @param {String} initialValue The initial value of the input
+ * @param {Boolean} listenValue Do you want to listen the value ?
+ */
 const useTextEditingController = <B extends boolean>({
   initialValue = '',
   listenValue,

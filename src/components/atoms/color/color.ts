@@ -104,6 +104,16 @@ class Color {
     return '#' + r + g + b + a;
   };
 
+  toRGBA = () => {
+    /**
+     * In CSS, `rgba` alpha channel goes from 0 to 1, like an opacity.
+     * So we transform this first.
+     */
+    const o = (this.alpha / 255).toFixed(2);
+
+    return `rgba(${this.red}, ${this.green}, ${this.blue}, ${o})`;
+  };
+
   /**
    * Returns a new color that matches this color with the alpha channel replaced with a (which ranges from 0 to 255).
    */
