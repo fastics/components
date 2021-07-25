@@ -9,6 +9,7 @@ import IconButton from './icon-button';
 export default {
   title: 'Molecules/IconButton',
   component: IconButton,
+  subcomponents: { Icon },
 } as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...args} />;

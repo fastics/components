@@ -36,6 +36,20 @@ export const IconButton = styled(IconButtonBase)<IconButtonProps>`
   display: inline-grid;
   place-items: center;
   cursor: pointer;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  user-select: none;
+
+  &:hover {
+    background-color: rgba(100, 100, 100, 0.1);
+    box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.1);
+  }
+
+  &:active {
+    background-color: rgba(100, 100, 100, 0.2);
+    box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.2);
+  }
 `;
 
 export default IconButton;
