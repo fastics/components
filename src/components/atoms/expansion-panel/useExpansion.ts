@@ -15,7 +15,6 @@ const getChildrenHeight = (parent?: HTMLElement | null) => {
 
   document.body.appendChild(div);
   const maxHeight = div.getBoundingClientRect().height;
-  console.log({ maxHeight });
   document.body.removeChild(div);
 
   return maxHeight;

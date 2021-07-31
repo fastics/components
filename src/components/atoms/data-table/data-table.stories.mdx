@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import DataTable, { buildDataColumn } from './data-table'; import Icon from '../icon'; import Icons
+  from '../icons';
+
+export const data = [
+  { name: 'John Doe', age: 26, gender: 'male' },
+  { name: 'Jane Doe', age: 23, gender: 'female' },
+];
+
+export const DataColumn = buildDataColumn();
+
+<Meta title="Atoms/DataTable" component={DataTable} />
+
+# DataTable
+
+A `DataTable` allows you to easily organize your data into a table.
+
+You first need to get your data typed (for better results).
+
+```ts
+const data = [
+  { name: 'John Doe', age: 26, gender: 'male' },
+  { name: 'Jane Doe', age: 23, gender: 'female' },
+] as const;
+
+type Data = typeof data;
+```
+
+Secondly, you need to generate `DataColumn` based on that typing :
+
+```tsx
+import { buildDataColumn } from './data-table';
+
+const data = [
+  { name: 'John Doe', age: 26, gender: 'male' },
+  { name: 'Jane Doe', age: 23, gender: 'female' },
+] as const;
+
+type Data = typeof data;
+
+const DataColumn = buildDataColumn<Data>(); // <== Here
+```
+
+Now you get a strongly typed data table ! (click `Show code` below to see actual code)
+
+<Canvas>
+  <Story name="Default">
+    <DataTable data={data}>
+      <DataColumn value="name" label="Name" />
+      <DataColumn value="age" label="Age" />
+      <DataColumn value="gender" label="Gender" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With value formatted
+
+<Canvas>
+  <Story name="With value formatted">
+    <DataTable data={data}>
+      <DataColumn
+        value="name"
+        label="Name"
+        formatValue={(value) => (
+          <>
+            <Icon icon={Icons.person} />
+            <span>{value}</span>
+          </>
+        )}
+      />
+      <DataColumn value="age" label="Age" formatValue={(value) => `${value} years`} />
+      <DataColumn value="gender" label="Gender" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With custom cell component
+<Canvas>
+  <Story name="With custom cell">
+    <DataTable data={data}>
+      <DataColumn value="name" label="Name" renderCell={({ value }) => <div style={{flex: 1, backgroundColor: 'red', color: 'white'}}>{value}</div>} />
+      <DataColumn value="age" label="Age" formatValue={(value) => `${value} years`} />
+      <DataColumn value="gender" label="Gender" flex={2} />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With custom row component
+<Canvas>
+  <Story name="With custom row">
+    <DataTable data={data} renderRow={({ children }) => <div style={{borderBottom: '1px solid red', display: 'flex'}}>{children}</div>}>
+      <DataColumn value="name" label="Name" />
+      <DataColumn value="age" label="Age" formatValue={(value) => `${value} years`} />
+      <DataColumn value="gender" label="Gender" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+<ArgsTable of={DataTable} />
