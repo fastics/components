@@ -1,3 +1,5 @@
+// TODO: Replace styled-components by react-jss
+
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 

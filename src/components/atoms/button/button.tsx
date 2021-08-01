@@ -1,3 +1,5 @@
+// TODO: Replace styled-components by react-jss
+
 import React, { ReactText } from 'react';
 import styled, { css } from 'styled-components';
 
