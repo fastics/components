@@ -1,3 +1,5 @@
+// TODO: Replace styled-components by react-jss
+
 import { css } from 'styled-components';
 
 import { theme } from '../../../styles/useTheme';

@@ -1,3 +1,5 @@
+// TODO: Replace styled-components by react-jss
+
 import React from 'react';
 import styled from 'styled-components';
 
