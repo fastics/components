@@ -19,5 +19,6 @@ export { default as Icon } from './icon';
 export { default as Icons } from './icons';
 export { default as Input } from './input';
 export { default as LinearProgressIndicator } from './linear-progress-indicator';
+export { default as Loader } from './loader';
 export { default as Modal } from './modal';
 export { default as TextButton } from './text-button';
