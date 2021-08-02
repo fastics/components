@@ -28,9 +28,9 @@ export const IconButtonBase: React.FC<IconButtonProps> = ({
   onPress,
   className,
 }) => (
-  <div className={className} onClick={onPress}>
+  <button className={className} onClick={onPress}>
     {IconComponent}
-  </div>
+  </button>
 );
 
 export const IconButton = styled(IconButtonBase)<IconButtonProps>`
