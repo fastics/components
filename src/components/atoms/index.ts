@@ -6,7 +6,6 @@
  * So we write our components, then we export them to the outer world.
  */
 
-export { default as Button } from './button';
 export { default as Color } from './color';
 export { default as Colors } from './colors';
 export { default as DataTable } from './data-table';
