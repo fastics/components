@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Children } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { Colors } from '../../atoms';
@@ -8,7 +8,6 @@ import Icons from '../../atoms/icons';
 import IconButton from '../icon-button';
 import classes from './carousel.module.scss';
 import useCarousel from './useCarousel';
-import { scrollLeftToStep, scrollRightToStep } from './utils';
 
 interface CarouselProps {
   /**

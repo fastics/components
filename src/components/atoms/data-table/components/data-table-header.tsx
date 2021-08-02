@@ -1,23 +1,23 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { Children, ReactElement } from 'react';
 
 import classes from '../data-table.module.scss';
-import { DataTableColumnProps } from '../types';
+import { DataTableClassNames, DataTableColumnProps } from '../types';
 import { filterChildren } from '../utils';
 
 interface DataTableHeaderProps<C> {
   children: ReactElement<C>[];
-  className?: string;
+  classNames?: DataTableClassNames;
 }
 
 const DataTableHeader = <C extends DataTableColumnProps>({
   children,
-  className,
+  classNames,
 }: DataTableHeaderProps<C>) => {
   const mandatoryColumns = filterChildren(children);
 
   return (
-    <div className={classNames(classes.header, classes.row, className)}>
+    <div className={classnames(classes.header, classes.row, classNames?.header, classNames?.row)}>
       {Children.map(mandatoryColumns, (child) => {
         const { flex = 1, label, value } = child.props;
 

@@ -11,10 +11,11 @@ export const DataTable = <D extends DataTableData>({
   data,
   children,
   renderRow,
+  classNames,
 }: DataTableProps<D>) => (
   <div>
-    <DataTableHeader children={children} />
-    <DataTableBody data={data} renderRow={renderRow}>
+    <DataTableHeader children={children} classNames={classNames} />
+    <DataTableBody data={data} renderRow={renderRow} classNames={classNames}>
       {children}
     </DataTableBody>
   </div>
