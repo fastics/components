@@ -156,7 +156,7 @@ describe('Atoms/Color', () => {
 
   describe('Red HSL', () => {
     it('should return correct RGB from HSL with perfect red', () => {
-      const colorHSL = Color.fromHSL(0, 100, 50);
+      const colorHSL = Color.fromHSLA(0, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 255, 0, 0);
 
       // @ts-expect-error
@@ -164,7 +164,7 @@ describe('Atoms/Color', () => {
     });
 
     it('should return correct RGB from HSL with darker red', () => {
-      const colorHSL = Color.fromHSL(0, 100, 40);
+      const colorHSL = Color.fromHSLA(0, 100, 40, 255);
       const colorRGBA = Color.fromARGB(255, 204, 0, 0);
 
       // @ts-expect-error
@@ -172,7 +172,7 @@ describe('Atoms/Color', () => {
     });
 
     it('should return correct RGB from HSL with less saturated red', () => {
-      const colorHSL = Color.fromHSL(0, 80, 40);
+      const colorHSL = Color.fromHSLA(0, 80, 40, 255);
       const colorRGBA = Color.fromARGB(255, 184, 20, 20);
 
       // @ts-expect-error
@@ -182,7 +182,7 @@ describe('Atoms/Color', () => {
 
   describe('Green HSL', () => {
     it('should return correct RGB from HSL with perfect green', () => {
-      const colorHSL = Color.fromHSL(120, 100, 50);
+      const colorHSL = Color.fromHSLA(120, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 0, 255, 0);
 
       // @ts-expect-error
@@ -190,7 +190,7 @@ describe('Atoms/Color', () => {
     });
 
     it('should return correct RGB from HSL another green', () => {
-      const colorHSL = Color.fromHSL(100, 100, 50);
+      const colorHSL = Color.fromHSLA(100, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 85, 255, 0);
 
       // @ts-expect-error
@@ -200,7 +200,7 @@ describe('Atoms/Color', () => {
 
   describe('Blue HSL', () => {
     it('should return correct RGB from HSL with perfect blue', () => {
-      const colorHSL = Color.fromHSL(240, 100, 50);
+      const colorHSL = Color.fromHSLA(240, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 0, 0, 255);
 
       // @ts-expect-error
@@ -208,7 +208,7 @@ describe('Atoms/Color', () => {
     });
 
     it('should return correct RGB from HSL turquoise', () => {
-      const colorHSL = Color.fromHSL(170, 100, 50);
+      const colorHSL = Color.fromHSLA(170, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 0, 255, 213);
 
       // @ts-expect-error
@@ -216,7 +216,7 @@ describe('Atoms/Color', () => {
     });
 
     it('should return correct RGB from HSL light blue', () => {
-      const colorHSL = Color.fromHSL(190, 100, 50);
+      const colorHSL = Color.fromHSLA(190, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 0, 213, 255);
 
       // @ts-expect-error
@@ -226,7 +226,7 @@ describe('Atoms/Color', () => {
 
   describe('Pink HSL', () => {
     it('should return correct RGB from HSL with light pink', () => {
-      const colorHSL = Color.fromHSL(300, 100, 50);
+      const colorHSL = Color.fromHSLA(300, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 255, 0, 255);
 
       // @ts-expect-error
@@ -234,7 +234,7 @@ describe('Atoms/Color', () => {
     });
 
     it('should return correct RGB from HSL with pink', () => {
-      const colorHSL = Color.fromHSL(310, 100, 50);
+      const colorHSL = Color.fromHSLA(310, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 255, 0, 212);
 
       // @ts-expect-error

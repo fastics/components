@@ -1,5 +1,9 @@
 import assert from 'assert';
 
+/**
+ * The [Color] class allows you to handle colors easily.
+ * You can manipulate a [Color] to add or subtract alpha, red, green or blue. And many other manipulations.
+ */
 class Color {
   private value;
   private readonly alpha;
@@ -37,6 +41,9 @@ class Color {
     assert(b <= 255, 'Blue channel should be between 0 and 255');
   };
 
+  /**
+   * Create a [Color] from alpha, red, green and blue channels.
+   */
   static fromARGB(a: number, r: number, g: number, b: number) {
     this.assert(a, r, g, b);
 
@@ -46,7 +53,10 @@ class Color {
     );
   }
 
-  static fromHSL(hue: number, saturation: number, lightness: number) {
+  /**
+   * Create a [Color] from hue, saturation and lightness.
+   */
+  static fromHSLA(hue: number, saturation: number, lightness: number, alpha: number = 255) {
     assert(hue >= 0, 'Hue should be between 0 and 360');
     assert(hue <= 360, 'Hue should be between 0 and 360');
     assert(saturation >= 0, 'Saturation should be between 0 and 100');
@@ -93,9 +103,12 @@ class Color {
     g = Math.round((g + m) * 255);
     b = Math.round((b + m) * 255);
 
-    return Color.fromARGB(255, r, g, b);
+    return Color.fromARGB(alpha, r, g, b);
   }
 
+  /**
+   * Converts the [Color] instance to CSS `#rrggbbaa`.
+   */
   toRGB = () => {
     const r = this.red.toString(16).padStart(2, '0');
     const g = this.green.toString(16).padStart(2, '0');
@@ -104,6 +117,9 @@ class Color {
     return '#' + r + g + b + a;
   };
 
+  /**
+   * Converts the [Color] instance to CSS `rgba(rrr, ggg, bbb, o)`.
+   */
   toRGBA = () => {
     /**
      * In CSS, `rgba` alpha channel goes from 0 to 1, like an opacity.
