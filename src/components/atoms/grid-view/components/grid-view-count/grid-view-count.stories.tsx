@@ -33,6 +33,10 @@ export default {
       defaultViewport: 'mobile2',
     },
   },
+  argTypes: {
+    padding: { control: { disable: true } },
+    className: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof GridViewCount>;
 
 const Template: ComponentStory<typeof GridViewCount> = (args) => (

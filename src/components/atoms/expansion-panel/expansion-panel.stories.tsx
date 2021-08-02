@@ -8,6 +8,10 @@ const Header = () => <span>Hello Panel</span>;
 export default {
   title: 'Atoms/ExpansionPanel',
   component: ExpansionPanel,
+  argTypes: {
+    headerBuilder: { control: { disable: true } },
+    children: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof ExpansionPanel>;
 
 const Template: ComponentStory<typeof ExpansionPanel> = (args) => (

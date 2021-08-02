@@ -10,6 +10,12 @@ export default {
   title: 'Molecules/IconButton',
   component: IconButton,
   subcomponents: { Icon },
+  argTypes: {
+    icon: { control: { disable: true } },
+    onPress: { control: { disable: true } },
+    padding: { control: { disable: true } },
+    className: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...args} />;

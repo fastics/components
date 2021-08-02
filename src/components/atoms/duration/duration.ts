@@ -52,6 +52,30 @@ class Duration {
       days * Duration.microsecondsPerDay;
   }
 
+  /**
+   * The part below aims to handle easier Duration construction.
+   */
+  //#region Constructors
+  static milliseconds(milliseconds: number) {
+    return new Duration({ milliseconds });
+  }
+  static microseconds(microseconds: number) {
+    return new Duration({ microseconds });
+  }
+  static seconds(seconds: number) {
+    return new Duration({ seconds });
+  }
+  static minutes(minutes: number) {
+    return new Duration({ minutes });
+  }
+  static hours(hours: number) {
+    return new Duration({ hours });
+  }
+  static days(days: number) {
+    return new Duration({ days });
+  }
+  //#endregion
+
   //#region Properties
   /**
    * The number of entire days spanned by this Duration.

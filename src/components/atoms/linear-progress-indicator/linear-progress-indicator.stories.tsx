@@ -2,14 +2,15 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { ComponentProps } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
+import Duration from '../duration';
 import LinearProgressIndicator from './linear-progress-indicator';
 
 export default {
   title: 'Atoms/LinearProgressIndicator',
   component: LinearProgressIndicator,
   argTypes: {
-    backgroundColor: { table: { disable: true } },
-    color: { table: { disable: true } },
+    backgroundColor: { control: { disable: true } },
+    color: { control: { disable: true } },
   },
 } as ComponentMeta<typeof LinearProgressIndicator>;
 
@@ -24,7 +25,7 @@ const AnimatedComponent = (props: ComponentProps<typeof LinearProgressIndicator>
     from: { value: 0 },
     to: { value: 100 },
     loop: true,
-    config: { ...config.molasses, duration: 5000 },
+    config: { ...config.molasses, duration: Duration.seconds(5).inMilliseconds },
   });
 
   return <AnimatedLinearProgressIndicator {...props} value={value.to((x) => x)} />;
@@ -49,5 +50,5 @@ Animated.args = {
   height: 4,
 };
 Animated.argTypes = {
-  value: { table: { disable: true } },
+  value: { control: { disable: true } },
 };

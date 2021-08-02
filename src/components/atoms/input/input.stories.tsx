@@ -7,6 +7,9 @@ import useTextEditingController from './useTextEditingController';
 export default {
   title: 'Atoms/Input',
   component: Input,
+  argTypes: {
+    controller: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;

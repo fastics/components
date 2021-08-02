@@ -8,6 +8,10 @@ export default {
   title: 'Atoms/Modal',
   component: Modal,
   decorators: [(story) => <div style={{ height: 300 }}>{story()}</div>],
+  argTypes: {
+    onClose: { control: { disable: true } },
+    children: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;

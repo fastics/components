@@ -7,6 +7,10 @@ import styles from './text-button.stories.module.scss';
 export default {
   title: 'Atoms/TextButton',
   component: TextButton,
+  argTypes: {
+    onPress: { control: { disable: true } },
+    className: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof TextButton>;
 
 const Template: ComponentStory<typeof TextButton> = (args) => <TextButton {...args} />;

@@ -20,9 +20,7 @@ export default {
   component: ColorComponent,
   argTypes: {
     colors: {
-      table: {
-        disable: true,
-      },
+      control: { disable: true },
     },
   },
 } as ComponentMeta<typeof ColorComponent>;

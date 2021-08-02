@@ -9,7 +9,7 @@ export default {
   component: Loader,
   argTypes: {
     color: {
-      table: { disable: true },
+      control: { disable: true },
     },
   },
 } as ComponentMeta<typeof Loader>;

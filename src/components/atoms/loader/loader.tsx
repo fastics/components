@@ -4,6 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import Color from '../color';
 import Colors from '../colors';
+import LoaderScreen from './components/loader-screen';
 
 interface LoaderProps {
   color?: Color;
@@ -56,11 +57,11 @@ const useStyles = createUseStyles({
   },
 });
 
-export const Loader: React.FC<LoaderProps> = ({
-  color = Colors.blue[500],
-  size = 16,
-  thickness = 2,
-}) => {
+type LoaderComponent = React.FC<LoaderProps> & {
+  Screen: React.FC;
+};
+
+export const Loader: LoaderComponent = ({ color = Colors.blue[500], size = 16, thickness = 2 }) => {
   const styles = useStyles({ color, size, thickness });
 
   return (
@@ -72,5 +73,7 @@ export const Loader: React.FC<LoaderProps> = ({
     </div>
   );
 };
+
+Loader.Screen = LoaderScreen;
 
 export default Loader;

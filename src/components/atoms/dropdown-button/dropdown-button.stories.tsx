@@ -22,6 +22,12 @@ export default {
     items: generateItems(),
     onChange: action('select'),
   },
+  argTypes: {
+    items: { control: { disable: true } },
+    onChange: { control: { disable: true } },
+    icon: { control: { disable: true } },
+    classNames: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof DropdownButton>;
 
 const Template: ComponentStory<typeof DropdownButton> = (args) => <DropdownButton {...args} />;

@@ -40,3 +40,7 @@ Count.args = {
   crossAxisCount: 4,
   scrollDirection: Axis.horizontal,
 };
+Count.argTypes = {
+  padding: { control: { disable: true } },
+  className: { control: { disable: true } },
+};

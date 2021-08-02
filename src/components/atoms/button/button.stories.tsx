@@ -13,6 +13,11 @@ export default {
     children: 'Hello Button',
     onClick: action('clicked button'),
   },
+  argTypes: {
+    color: { control: { disable: true } },
+    className: { control: { disable: true } },
+    onClick: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;

@@ -9,6 +9,9 @@ export default {
   args: {
     obscureText: false,
   },
+  argTypes: {
+    className: { control: { disable: true } },
+  },
 } as ComponentMeta<typeof TextField>;
 
 const Template: ComponentStory<typeof TextField> = (args) => <TextField {...args} />;
