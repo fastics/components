@@ -1,0 +1,264 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Colors from './colors';
+
+export const ColorComponent = ({ color, name }) => (
+  <div style={{
+    width: 200,
+    height: 100,
+    display: 'grid',
+    placeItems: 'center',
+    backgroundColor: color.toRGBA(),
+  }}>
+    <span
+      style={{ color: color.estimateBrightness() === 'light' ? Colors.black.toRGB() : Colors.white.toRGB() }}>{name}</span>
+  </div>
+)
+
+export const PaletteComponent = ({ colorKey }) => (
+  <div style={{ display: 'flex' }}>
+    {Object.entries(Colors[colorKey]).map(([k, v]) => (
+      <ColorComponent color={v} name={`${colorKey}[${k}]`} />
+    ))}
+  </div>
+)
+
+<Meta title="Colors" />
+
+# Colors
+
+You can use any Material Color.
+All [Colors](?path=/docs/atoms-colors--page) render a [Color](?path=/docs/atoms-color--page), so you can manipulate them freely.
+
+```tsx
+import Colors from './colors';
+
+const green = Colors.green[500];
+
+return <div style={{ backgroundColor: green.toRGBA() }} />
+```
+
+<Canvas>
+  <div style={{ width: 50, height: 50, backgroundColor: Colors.green[500].toRGBA() }} />
+</Canvas>
+
+## Color palettes
+
+### Amber
+<Canvas>
+  <Story name="amber">
+    <PaletteComponent colorKey="amber" />
+  </Story>
+  <Story name="amberAccent">
+    <PaletteComponent colorKey="amberAccent" />
+  </Story>
+</Canvas>
+
+### Black
+<Canvas>
+  <Story name="black">
+    <div style={{ display: 'flex' }}>
+      <ColorComponent color={Colors.black} name="black" />
+      <ColorComponent color={Colors.black12} name="black12" />
+      <ColorComponent color={Colors.black26} name="black26" />
+      <ColorComponent color={Colors.black38} name="black38" />
+      <ColorComponent color={Colors.black45} name="black45" />
+      <ColorComponent color={Colors.black54} name="black54" />
+      <ColorComponent color={Colors.black87} name="black87" />
+    </div>
+  </Story>
+</Canvas>
+
+### Blue
+<Canvas>
+  <Story name="blue">
+    <PaletteComponent colorKey="blue" />
+  </Story>
+  <Story name="blueAccent">
+    <PaletteComponent colorKey="blueAccent" />
+  </Story>
+</Canvas>
+
+### Blue Grey
+<Canvas>
+  <Story name="blueGrey">
+    <PaletteComponent colorKey="blueGrey" />
+  </Story>
+</Canvas>
+
+### Brown
+<Canvas>
+  <Story name="brown">
+    <PaletteComponent colorKey="brown" />
+  </Story>
+</Canvas>
+
+### Cyan
+<Canvas>
+  <Story name="cyan">
+    <PaletteComponent colorKey="cyan" />
+  </Story>
+  <Story name="cyanAccent">
+    <PaletteComponent colorKey="cyanAccent" />
+  </Story>
+</Canvas>
+
+### Deep Orange
+<Canvas>
+  <Story name="deepOrange">
+    <PaletteComponent colorKey="deepOrange" />
+  </Story>
+  <Story name="deepOrangeAccent">
+    <PaletteComponent colorKey="deepOrangeAccent" />
+  </Story>
+</Canvas>
+
+### Deep Purple
+<Canvas>
+  <Story name="deepPurple">
+    <PaletteComponent colorKey="deepPurple" />
+  </Story>
+  <Story name="deepPurpleAccent">
+    <PaletteComponent colorKey="deepPurpleAccent" />
+  </Story>
+</Canvas>
+
+### Green
+<Canvas>
+  <Story name="green">
+    <PaletteComponent colorKey="green" />
+  </Story>
+  <Story name="greenAccent">
+    <PaletteComponent colorKey="greenAccent" />
+  </Story>
+</Canvas>
+
+### Grey
+<Canvas>
+  <Story name="grey">
+    <PaletteComponent colorKey="grey" />
+  </Story>
+</Canvas>
+
+### Indigo
+<Canvas>
+  <Story name="indigo">
+    <PaletteComponent colorKey="indigo" />
+  </Story>
+  <Story name="indigoAccent">
+    <PaletteComponent colorKey="indigoAccent" />
+  </Story>
+</Canvas>
+
+### Light Blue
+<Canvas>
+  <Story name="lightBlue">
+    <PaletteComponent colorKey="lightBlue" />
+  </Story>
+  <Story name="lightBlueAccent">
+    <PaletteComponent colorKey="lightBlueAccent" />
+  </Story>
+</Canvas>
+
+### Light Green
+<Canvas>
+  <Story name="lightGreen">
+    <PaletteComponent colorKey="lightGreen" />
+  </Story>
+  <Story name="lightGreenAccent">
+    <PaletteComponent colorKey="lightGreenAccent" />
+  </Story>
+</Canvas>
+
+### Lime
+<Canvas>
+  <Story name="lime">
+    <PaletteComponent colorKey="lime" />
+  </Story>
+  <Story name="limeAccent">
+    <PaletteComponent colorKey="limeAccent" />
+  </Story>
+</Canvas>
+
+### Orange
+<Canvas>
+  <Story name="orange">
+    <PaletteComponent colorKey="orange" />
+  </Story>
+  <Story name="orangeAccent">
+    <PaletteComponent colorKey="orangeAccent" />
+  </Story>
+</Canvas>
+
+### Pink
+<Canvas>
+  <Story name="pink">
+    <PaletteComponent colorKey="pink" />
+  </Story>
+  <Story name="pinkAccent">
+    <PaletteComponent colorKey="pinkAccent" />
+  </Story>
+</Canvas>
+
+### Purple
+<Canvas>
+  <Story name="purple">
+    <PaletteComponent colorKey="purple" />
+  </Story>
+  <Story name="purpleAccent">
+    <PaletteComponent colorKey="purpleAccent" />
+  </Story>
+</Canvas>
+
+### Red
+<Canvas>
+  <Story name="red">
+    <PaletteComponent colorKey="red" />
+  </Story>
+  <Story name="redAccent">
+    <PaletteComponent colorKey="redAccent" />
+  </Story>
+</Canvas>
+
+### Teal
+<Canvas>
+  <Story name="teal">
+    <PaletteComponent colorKey="teal" />
+  </Story>
+  <Story name="tealAccent">
+    <PaletteComponent colorKey="tealAccent" />
+  </Story>
+</Canvas>
+
+### Transparent
+<Canvas>
+  <Story name="transparent">
+    <ColorComponent color={Colors.transparent} name="transparent" />
+  </Story>
+</Canvas>
+
+### White
+<Canvas>
+  <Story name="white" parameters={{ backgrounds: { default: 'dark' } }}>
+    <div style={{ display: 'flex' }}>
+      <ColorComponent color={Colors.white} name="white" />
+      <ColorComponent color={Colors.white10} name="white10" />
+      <ColorComponent color={Colors.white12} name="white12" />
+      <ColorComponent color={Colors.white24} name="white24" />
+      <ColorComponent color={Colors.white30} name="white30" />
+      <ColorComponent color={Colors.white38} name="white38" />
+      <ColorComponent color={Colors.white54} name="white54" />
+      <ColorComponent color={Colors.white60} name="white60" />
+      <ColorComponent color={Colors.white70} name="white70" />
+    </div>
+  </Story>
+</Canvas>
+
+### Yellow
+<Canvas>
+  <Story name="yellow">
+    <PaletteComponent colorKey="yellow" />
+  </Story>
+  <Story name="yellowAccent">
+    <PaletteComponent colorKey="yellowAccent" />
+  </Story>
+</Canvas>

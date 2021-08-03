@@ -1,5 +1,5 @@
-import Color from '../components/atoms/color';
-import Colors from '../components/atoms/colors';
+import Color from '../components/color';
+import Colors from '../components/colors';
 
 export const theme = {
   primaryColor: Colors.blue[800],
