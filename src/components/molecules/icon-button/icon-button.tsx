@@ -42,6 +42,7 @@ export const IconButton = styled(IconButtonBase)<IconButtonProps>`
   border-radius: 50%;
   transition: all 0.3s ease;
   user-select: none;
+  border: none;
 
   &:hover {
     background-color: rgba(100, 100, 100, 0.1);

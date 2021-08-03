@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import React, { ReactChild, ReactChildren } from 'react';
 
 import { IconButton, Padding } from '../../molecules';
@@ -6,6 +6,14 @@ import Icon from '../icon';
 import Icons from '../icons';
 import classes from './expansion-panel.module.scss';
 import useExpansion from './useExpansion';
+
+interface ExpansionPanelClassNames {
+  wrapper?: string;
+  header?: string;
+  headerIconButton?: string;
+  contentOuter?: string;
+  contentInner?: string;
+}
 
 interface ExpansionPanelProps {
   /**
@@ -17,25 +25,43 @@ interface ExpansionPanelProps {
    * It's only displayed when panel is expanded.
    */
   children: ReactChildren | ReactChild;
+  classNames?: ExpansionPanelClassNames;
 }
 
-export const ExpansionPanel: React.FC<ExpansionPanelProps> = ({ headerBuilder, children }) => {
+export const ExpansionPanel: React.FC<ExpansionPanelProps> = ({
+  headerBuilder,
+  children,
+  classNames,
+}) => {
   const { ref: contentRef, contentHeight, isExpanded, toggleExpand } = useExpansion(children);
 
   return (
-    <div className={classNames(classes.wrapper, { [classes.wrapper__open]: isExpanded })}>
-      <div className={classes.header}>
+    <div
+      className={classnames(
+        classes.wrapper,
+        { [classes.wrapper__open]: isExpanded },
+        classNames?.wrapper,
+      )}
+    >
+      <div className={classnames(classes.header, classNames?.header)}>
         {headerBuilder({ isExpanded })}
 
         <IconButton
           onPress={toggleExpand}
           icon={<Icon icon={Icons.keyboard_arrow_down} className={classes.arrow} />}
           padding={Padding.all(24)}
+          className={classNames?.headerIconButton}
         />
       </div>
 
-      <div ref={contentRef} className={classes.content} style={{ maxHeight: contentHeight }}>
-        <div className={classes.content_inner}>{children}</div>
+      <div
+        ref={contentRef}
+        className={classnames(classes.content, classNames?.contentOuter)}
+        style={{ maxHeight: contentHeight }}
+      >
+        <div className={classnames(classes.content_inner, classNames?.contentInner)}>
+          {children}
+        </div>
       </div>
     </div>
   );
