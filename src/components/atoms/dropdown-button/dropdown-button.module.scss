@@ -1,9 +1,7 @@
 .wrapper {
-  padding: 12px;
   user-select: none;
   position: relative;
   display: inline-block;
-  border-bottom: 2px solid #000;
 
   & > span {
     display: flex;
@@ -40,6 +38,7 @@
 .item_list_item {
   padding: 12px;
   margin: 0;
+  text-align: left;
 
   &__placeholder {
     color: rgba(0, 0, 0, .52)

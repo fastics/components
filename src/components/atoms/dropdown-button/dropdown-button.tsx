@@ -1,5 +1,13 @@
 import classnames from 'classnames';
-import React, { ReactText, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  HTMLProps,
+  ReactText,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import useOnClickOutside from '../../../hooks';
 import Icon from '../icon';
@@ -34,15 +42,15 @@ export type DropdownButtonClassNames = {
   /**
    * Override wrapper style by creating className.
    */
-  wrapper?: string;
+  wrapper?: HTMLProps<HTMLButtonElement>['className'];
   /**
    * Override item list style by creating className.
    */
-  item_list?: string;
+  item_list?: HTMLProps<HTMLUListElement>['className'];
   /**
    * Override list item style by creating className.
    */
-  item_list_item?: string;
+  item_list_item?: HTMLProps<HTMLLIElement>['className'];
 };
 
 interface BaseDropdownButtonProps {
@@ -103,7 +111,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   placeholder,
   value,
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
   const ulRef = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [maxW, setMaxW] = useState(0);
@@ -149,7 +157,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   }, [value]);
 
   return (
-    <div
+    <button
       ref={ref}
       className={classnames(
         classes.wrapper,
@@ -195,7 +203,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           </li>
         ))}
       </ul>
-    </div>
+    </button>
   );
 };
 
