@@ -9,7 +9,7 @@ export interface TextButtonProps {
   /**
    * Called when the button is tapped or otherwise activated.
    */
-  onPress?: Maybe<MouseEventHandler<HTMLDivElement>>;
+  onPress?: Maybe<MouseEventHandler<HTMLButtonElement>>;
   /**
    * Typically the button's label.
    */
@@ -29,7 +29,9 @@ export interface TextButtonProps {
 export const TextButton: React.FC<TextButtonProps> = ({ onPress, children, className }) => {
   // Handle click event
   const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+
       if (onPress) {
         onPress(event);
       }
@@ -38,13 +40,13 @@ export const TextButton: React.FC<TextButtonProps> = ({ onPress, children, class
   );
 
   return (
-    <div
+    <button
       className={classNames(styles.wrapper, { [styles.wrapper__disabled]: !onPress }, className)}
       onClick={handleClick}
       data-testid="text-button"
     >
       <span>{children}</span>
-    </div>
+    </button>
   );
 };
 
