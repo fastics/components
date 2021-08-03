@@ -17,7 +17,7 @@ export const ColorComponent = ({ color, name }) => (
 export const PaletteComponent = ({ colorKey }) => (
   <div style={{ display: 'flex' }}>
     {Object.entries(Colors[colorKey]).map(([k, v]) => (
-      <ColorComponent color={v} name={`${colorKey}[${k}]`} />
+      <ColorComponent key={`${colorKey}-${k}`} color={v} name={`${colorKey}[${k}]`} />
     ))}
   </div>
 )

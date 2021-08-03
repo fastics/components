@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Colors from './colors'; import Icon from './icon'; import Icons from './icons';
 
 <Meta title="Introduction" />
 
@@ -8,3 +9,93 @@ I try to expose some components that will easy your life, but with a minimal sty
 
 Because I know you will be better than me at designing your components, I expose as much styling as I can.
 So you will get some components that you will love, with YOUR design, but simple to use.
+
+## Utilities
+
+I included some utilities to get your life easier.
+
+Here is an exhaustive list of them:
+- [Color](/docs/color--page) to create and manipulate colors.
+- [Colors](/docs/colors--amber) to get Material Colors easily e.g.,.: `Colors.red[500]`
+<div style={{ width: 100, height: 30, display: 'inline-block', backgroundColor: Colors.red[500].toRGBA() }} />
+- [Icons](/docs/icons--default) to easily select Material Icon e.g.,.: `Icons.face`
+<Icon icon={Icons.face} />
+
+## Components Library
+
+Here are the actual components, ordered by alphabetical name. It's an actual showcase of what you can use.
+
+For more information, please directly get into the component documentation.
+
+### [Carousel](/docs/carousel--default)
+<Canvas>
+  <Story id='carousel--default' />
+</Canvas>
+
+### [DataTable](/docs/datatable--default-story)
+<Canvas>
+  <Story id='datatable--default-story' />
+</Canvas>
+
+### [DropdownButton](/docs/dropdownbutton--default)
+<Canvas>
+  <Story id='dropdownbutton--default' />
+</Canvas>
+
+### [ExpansionPanel](/docs/expansionpanel--default)
+<Canvas>
+  <Story id='expansionpanel--default' />
+</Canvas>
+
+### [GridView.Count](/docs/gridview-count--default)
+<Canvas>
+  <Story id='gridview-count--default' />
+</Canvas>
+
+### [IconButton](/docs/iconbutton--default)
+<Canvas>
+  <Story id='iconbutton--default' />
+</Canvas>
+
+### [Icon](/docs/icon--default)
+<Canvas>
+  <Story id='icon--default' />
+</Canvas>
+
+### [Input](/docs/input--default)
+<Canvas>
+  <Story id='input--default' />
+</Canvas>
+
+### [LinearProgressIndicator](/docs/linearprogressindicator--default)
+<Canvas>
+  <Story id='linearprogressindicator--default' />
+</Canvas>
+
+### [Loader](/docs/loader--default)
+<Canvas>
+  <Story id='loader--default' />
+</Canvas>
+
+### [Loader.Screen](/docs/loader-screen--default)
+<Canvas>
+  <Story id='loader-screen--default' />
+</Canvas>
+
+### [Modal](/docs/modal--default)
+For obvious reasons, I cannot include modal here. You can click on the title to see it in action.
+
+### [Stepper](/docs/stepper--default)
+<Canvas>
+  <Story id='stepper--default' />
+</Canvas>
+
+### [TextButton](/docs/textbutton--default)
+<Canvas>
+  <Story id='textbutton--default' />
+</Canvas>
+
+### [TextField](/docs/textfield--default)
+<Canvas>
+  <Story id='textfield--default' />
+</Canvas>
