@@ -6,9 +6,9 @@ import Icon from '../icon';
 import Icons, { IconData } from './icons';
 
 const IconComponent = ({ value, icon }: { value: keyof Icons; icon: IconData }) => (
-  <div style={{ marginBottom: 12 }}>
-    <div>{value}</div>
+  <div style={{ marginBottom: 12, display: 'flex', alignItems: 'center' }}>
     <Icon icon={icon} />
+    <div>{value}</div>
   </div>
 );
 
