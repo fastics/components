@@ -58,7 +58,7 @@ const useStyles = createUseStyles({
 });
 
 type LoaderComponent = React.FC<LoaderProps> & {
-  Screen: React.FC;
+  Screen: typeof LoaderScreen;
 };
 
 export const Loader: LoaderComponent = ({ color = Colors.blue[500], size = 16, thickness = 2 }) => {
