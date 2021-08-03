@@ -476,7 +476,7 @@ class Colors {
   /**
    * Completely invisible.
    */
-  static transparent = new Color(0x00000000);
+  static transparent = new Color(0x00ffffff);
 
   /**
    * Completely opaque white.
