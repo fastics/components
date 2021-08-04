@@ -37,6 +37,7 @@ export default {
   argTypes: {
     padding: { control: { disable: true } },
     className: { control: { disable: true } },
+    children: { control: { disable: true } },
   },
 } as ComponentMeta<typeof GridViewCount>;
 
