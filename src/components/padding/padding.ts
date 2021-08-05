@@ -2,11 +2,10 @@
 
 import { css } from 'styled-components';
 
+import { Maybe } from '../../types';
 import EdgeInsets from '../edge-insets';
 
-type Nullable<T> = T | null;
-
-const isNull = <T extends any>(value: Nullable<T>) => value === null;
+const isNull = <T extends any>(value: Maybe<T>) => value === null;
 
 class Padding extends EdgeInsets {
   /**
@@ -51,10 +50,10 @@ class Padding extends EdgeInsets {
     bottom = null,
     left = null,
   }: {
-    top?: Nullable<number>;
-    right?: Nullable<number>;
-    bottom?: Nullable<number>;
-    left?: Nullable<number>;
+    top?: Maybe<number>;
+    right?: Maybe<number>;
+    bottom?: Maybe<number>;
+    left?: Maybe<number>;
   }) {
     return new Padding(
       top ?? this.top,

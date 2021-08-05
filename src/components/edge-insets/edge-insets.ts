@@ -1,23 +1,23 @@
-type Nullable<T> = T | null;
+import { Maybe } from '../../types';
 
 type NewEdgeInsets<T> = new (
-  top: Nullable<number>,
-  right: Nullable<number>,
-  bottom: Nullable<number>,
-  left: Nullable<number>,
+  top: Maybe<number>,
+  right: Maybe<number>,
+  bottom: Maybe<number>,
+  left: Maybe<number>,
 ) => T;
 
 abstract class EdgeInsets {
-  top: Nullable<number>;
-  right: Nullable<number>;
-  bottom: Nullable<number>;
-  left: Nullable<number>;
+  top: Maybe<number>;
+  right: Maybe<number>;
+  bottom: Maybe<number>;
+  left: Maybe<number>;
 
   constructor(
-    top: Nullable<number>,
-    right: Nullable<number>,
-    bottom: Nullable<number>,
-    left: Nullable<number>,
+    top: Maybe<number>,
+    right: Maybe<number>,
+    bottom: Maybe<number>,
+    left: Maybe<number>,
   ) {
     this.top = top;
     this.right = right;
@@ -44,8 +44,8 @@ abstract class EdgeInsets {
       horizontal = null,
       vertical = null,
     }: {
-      horizontal?: Nullable<number>;
-      vertical?: Nullable<number>;
+      horizontal?: Maybe<number>;
+      vertical?: Maybe<number>;
     },
   ) {
     return new this(vertical, horizontal, vertical, horizontal);
@@ -66,10 +66,10 @@ abstract class EdgeInsets {
       bottom = null,
       left = null,
     }: {
-      top?: Nullable<number>;
-      right?: Nullable<number>;
-      bottom?: Nullable<number>;
-      left?: Nullable<number>;
+      top?: Maybe<number>;
+      right?: Maybe<number>;
+      bottom?: Maybe<number>;
+      left?: Maybe<number>;
     } = {},
   ) {
     return new this(top, right, bottom, left);
@@ -84,10 +84,10 @@ abstract class EdgeInsets {
    */
   static fromLTRB<T extends EdgeInsets>(
     this: NewEdgeInsets<T>,
-    left: Nullable<number>,
-    top: Nullable<number>,
-    right: Nullable<number>,
-    bottom: Nullable<number>,
+    left: Maybe<number>,
+    top: Maybe<number>,
+    right: Maybe<number>,
+    bottom: Maybe<number>,
   ) {
     return new this(top, right, bottom, left);
   }

@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import { FC, MouseEvent, MouseEventHandler, ReactChild, useCallback } from 'react';
 
+import { Maybe } from '../../types';
 import styles from './text-button.module.scss';
-
-type Maybe<T> = T | null;
 
 export interface TextButtonProps {
   /**

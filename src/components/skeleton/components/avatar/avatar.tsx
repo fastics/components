@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React from 'react';
+import { FC } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../../../color';
@@ -86,7 +86,7 @@ const useStyles = createUseStyles({
 /**
  * You can display a **[Skeleton.Avatar]** to mimic an avatar while content is loading.
  */
-export const SkeletonAvatar: React.FC<AvatarProps> = ({
+export const SkeletonAvatar: FC<AvatarProps> = ({
   size = 'default',
   shape = 'circle',
   active = false,
