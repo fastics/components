@@ -24,6 +24,9 @@ interface CalendarProps {
   formatDay?: (day: Day) => string;
 }
 
+/**
+ * A **[Calendar]** that uses no library.
+ */
 export const Calendar: React.FC<CalendarProps> = ({
   value = new Date(),
   locale = SupportedLocales.EN,

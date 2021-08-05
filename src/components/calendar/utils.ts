@@ -1,3 +1,6 @@
+/**
+ * Get the first monday of first week of month.
+ */
 export const getFirstDayOfMonthWeek = (monthDate: Date) => {
   const date = new Date(monthDate);
 
@@ -5,7 +8,9 @@ export const getFirstDayOfMonthWeek = (monthDate: Date) => {
   date.setDate(1);
 
   /**
-   * This variable holds the first day of month as day (day name).
+   * While date is not monday, we go in past.
+   * We finally get first monday of month's first week
+   *
    * 0 - sunday
    * 1 - monday
    * 2 - tuesday
@@ -14,8 +19,6 @@ export const getFirstDayOfMonthWeek = (monthDate: Date) => {
    * 5 - friday
    * 6 - saturday
    */
-  // const day = date.getDay();
-
   while (date.getDay() !== 1) {
     date.setDate(date.getDate() - 1);
   }
@@ -23,6 +26,10 @@ export const getFirstDayOfMonthWeek = (monthDate: Date) => {
   return date;
 };
 
+/**
+ * Get an array of all dates between the first day of the first week of the month, and the last sunday
+ * of the last week of the month.
+ */
 export const getDaysInMonth = (monthDate: Date) => {
   // First we get the first day of the month week.
   const firstDayOfMonthWeek = getFirstDayOfMonthWeek(monthDate);
@@ -49,9 +56,17 @@ export const getDaysInMonth = (monthDate: Date) => {
   return daysInMonth;
 };
 
+/**
+ * Check if a given `day` Date is in the `monthDate` Date.
+ * Basically it aims to stripe the days that aren't in current month.
+ */
 export const isInCurrentMonth = (day: Date, monthDate: Date) =>
   day.getMonth() === monthDate.getMonth();
 
+/**
+ * Check is a date is today.
+ * It's sad that JavaScript does not do it by default.
+ */
 export const isToday = (date: Date) => {
   const today = new Date();
   return (
