@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 
 import ExpansionPanel from './expansion-panel';
 import classes from './expansion-panel.stories.module.scss';

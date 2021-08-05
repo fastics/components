@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { ReactChild, ReactChildren } from 'react';
+import { FC, ReactChild, ReactChildren } from 'react';
 
 import Icon from '../icon';
 import IconButton from '../icon-button';
@@ -29,7 +29,7 @@ interface ExpansionPanelProps {
   classNames?: ExpansionPanelClassNames;
 }
 
-export const ExpansionPanel: React.FC<ExpansionPanelProps> = ({
+export const ExpansionPanel: FC<ExpansionPanelProps> = ({
   headerBuilder,
   children,
   classNames,

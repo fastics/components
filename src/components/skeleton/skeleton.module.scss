@@ -1,0 +1,18 @@
+.skeleton {
+  display: table;
+  width: 100%;
+  vertical-align: top;
+
+  &__active {}
+}
+
+.header {
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 16px;
+}
+
+.content {
+  display: table-cell;
+  width: 100%;
+}

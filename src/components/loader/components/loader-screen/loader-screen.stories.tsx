@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 
 import Duration from '../../../duration';
 import LoaderScreen from './loader-screen';

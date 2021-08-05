@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 
 import Colors from '../colors';
 import Carousel from './carousel';

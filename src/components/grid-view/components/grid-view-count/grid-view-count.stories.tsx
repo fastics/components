@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 
 import Colors from '../../../colors';
 import Icon from '../../../icon';

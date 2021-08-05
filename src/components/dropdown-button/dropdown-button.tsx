@@ -1,6 +1,8 @@
 import classnames from 'classnames';
-import React, {
+import {
+  FC,
   HTMLProps,
+  MouseEvent,
   ReactText,
   useCallback,
   useEffect,
@@ -101,7 +103,7 @@ type DropdownButtonProps = DropdownButtonPropsWithAllowEmpty | DropdownButtonPro
  * The button shows the currently selected item as well as an arrow that opens a menu for selecting
  * another item.
  */
-export const DropdownButton: React.FC<DropdownButtonProps> = ({
+export const DropdownButton: FC<DropdownButtonProps> = ({
   allowEmpty = false,
   classNames,
   icon = Icons.arrow_drop_down,
@@ -122,7 +124,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   );
 
   const handleSelect = useCallback(
-    (nextValue: string) => (event: React.MouseEvent<HTMLLIElement>) => {
+    (nextValue: string) => (event: MouseEvent<HTMLLIElement>) => {
       event.stopPropagation();
 
       if (onChange) onChange(nextValue);

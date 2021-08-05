@@ -1,6 +1,6 @@
 // TODO: Replace styled-components by react-jss
 
-import React from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 
 import Icon from '../icon';
@@ -23,7 +23,7 @@ interface StyledIconProps {
 
 type IconButtonProps = IconButtonBaseProps & StyledIconProps;
 
-export const IconButtonBase: React.FC<IconButtonProps> = ({
+export const IconButtonBase: FC<IconButtonProps> = ({
   icon: IconComponent,
   onPress,
   className,

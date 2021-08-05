@@ -1,6 +1,6 @@
 // TODO: Replace styled-components by react-jss
 
-import React, { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import styled from 'styled-components';
 
 import Color from '../color';
@@ -38,7 +38,7 @@ interface IconInnerProps {
   semanticLabel?: string;
 }
 
-export const IconInner: React.FC<IconInnerProps> = ({ className, icon, semanticLabel }) => {
+export const IconInner: FC<IconInnerProps> = ({ className, icon, semanticLabel }) => {
   const classes = useMemo(
     () => [mapIcon(icon.variant), className].filter(Boolean).join(' '),
     [className, icon.variant],

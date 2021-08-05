@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 
 import Modal from './modal';
 import classes from './modal.stories.module.scss';

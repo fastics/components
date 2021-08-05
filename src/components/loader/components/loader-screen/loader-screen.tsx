@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../../../color';
@@ -116,7 +116,7 @@ const makeUseStyles = ({
 /**
  * This component aims to be used when an entire screen is loading.
  */
-export const LoaderScreen: React.FC<LoaderScreenProps> = ({
+export const LoaderScreen: FC<LoaderScreenProps> = ({
   animationDuration = new Duration({ seconds: 1 }),
   color1 = Colors.red[200],
   color2 = Colors.black,

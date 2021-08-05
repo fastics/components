@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { ReactNode, useCallback } from 'react';
+import { FC, ReactNode, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import useMergedState from '../../hooks/useMergedState';
@@ -86,7 +86,7 @@ const useStyles = createUseStyles({
  * By default, if you don't pass `checked` and `onChange`, it's considered `uncontrolled`.
  * That means you can't control its value nor catch its change.
  */
-export const Toggle: React.FC<ToggleProps> = ({
+export const Toggle: FC<ToggleProps> = ({
   checked,
   onChange,
   checkedColor = Colors.teal[500],
