@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 
 import Colors from '../../../colors';
+import SkeletonContext from '../../context/skeleton-context';
 import SkeletonAvatar from './avatar';
 
 export default {
@@ -17,18 +18,27 @@ export default {
 } as ComponentMeta<typeof SkeletonAvatar>;
 
 const Template: ComponentStory<typeof SkeletonAvatar> = (args) => <SkeletonAvatar {...args} />;
+const ActiveTemplate: ComponentStory<typeof SkeletonAvatar> = (args) => (
+  <SkeletonContext.Provider value={{ active: true }}>
+    <SkeletonAvatar {...args} />
+  </SkeletonContext.Provider>
+);
 
 export const Default = Template.bind({});
 Default.args = {
   shape: 'circle',
-  active: false,
+  size: 'default',
+};
+
+export const Active = ActiveTemplate.bind({});
+Active.args = {
+  shape: 'circle',
   size: 'default',
 };
 
 export const WithAnotherColor = Template.bind({});
 WithAnotherColor.args = {
   shape: 'circle',
-  active: false,
   size: 'default',
   color: Colors.red[200],
 };
@@ -36,7 +46,6 @@ WithAnotherColor.args = {
 export const WithCustomSizes = Template.bind({});
 WithCustomSizes.args = {
   shape: 'circle',
-  active: false,
   size: 'default',
   sizes: {
     small: 124,

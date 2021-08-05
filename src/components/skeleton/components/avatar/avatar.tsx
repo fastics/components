@@ -4,19 +4,13 @@ import { createUseStyles } from 'react-jss';
 
 import Color from '../../../color';
 import Colors from '../../../colors';
+import useSkeletonContext from '../../hooks/useSkeletonContext';
 import classes from './avatar.module.scss';
 
 type AvatarSize = 'small' | 'default' | 'large';
 type AvatarSizes = Record<AvatarSize, number>;
 
 interface AvatarProps {
-  /**
-   * If `true`, an infinite animation runs.
-   *
-   * You should use it if you are loading something.
-   * @default false
-   */
-  active?: boolean;
   /**
    * Defines the **[Skeleton.Avatar]** shape.
    * @default circle
@@ -35,12 +29,6 @@ interface AvatarProps {
    * @default default
    */
   size?: number | AvatarSize;
-  /**
-   * Override **[Skeleton.Avatar]** default color.
-   *
-   * @default Colors.grey[200]
-   */
-  color?: Color;
   /**
    * You can override default sizes values.
    *
@@ -89,10 +77,9 @@ const useStyles = createUseStyles({
 export const SkeletonAvatar: FC<AvatarProps> = ({
   size = 'default',
   shape = 'circle',
-  active = false,
-  color = Colors.grey[200],
   sizes = DEFAULT_SIZES,
 }) => {
+  const { active = false, color = Colors.grey[200] } = useSkeletonContext();
   const styles = useStyles({ size, shape, active, color, sizes });
 
   return (
