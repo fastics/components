@@ -1,0 +1,79 @@
+.calendar {
+  --border-color: #e5e5e5;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-transform: uppercase;
+  place-items: center;
+  border-top: 1px solid var(--border-color);
+
+  .cell {
+    padding: 24px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex: 1;
+
+  .cell {
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    // Targets every first row cell
+    &:nth-child(7n + 1) {
+      border-left: 1px solid var(--border-color);
+    }
+
+    // Target 7 first children cell
+    &:nth-child(-n + 7) {
+      border-top: 1px solid var(--border-color);
+    }
+  }
+}
+
+.cell {
+  --color-1: transparent;
+  --color-2: #f5f5f5;
+
+  position: relative;
+
+  &__out_of_range {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--color-1),
+      var(--color-1) 10px,
+      var(--color-2) 10px,
+      var(--color-2) 20px
+    );
+  }
+}
+
+.day_number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: grey;
+  font-size: 14px;
+
+  &__current {
+    --circle-size: 28px;
+
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    display: grid;
+    place-items: center;
+    top: 4px;
+    right: 4px;
+  }
+}
