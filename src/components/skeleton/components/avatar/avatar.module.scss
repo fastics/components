@@ -1,0 +1,21 @@
+@keyframes loading {
+  from { background-position: 100% 50%; }
+  to { background-position: 0 50%; }
+}
+
+.wrapper {
+  display: inline-block;
+
+  &__circle { border-radius: 50%; }
+
+  &__active {
+    background: linear-gradient(
+      90deg,
+      rgba(190, 190, 190, 0.2) 25%,
+      rgba(129, 129, 129, 0.24) 37%,
+      rgba(190, 190, 190, 0.2) 63%
+    );
+    background-size: 400% 100%;
+    animation: loading 1.4s ease infinite;
+  }
+}
