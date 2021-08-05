@@ -10,6 +10,7 @@ interface LoaderProps {
   color?: Color;
   size?: number;
   thickness?: number;
+  className?: string;
 }
 
 interface LoaderStylesProps {
@@ -61,11 +62,16 @@ type LoaderComponent = React.FC<LoaderProps> & {
   Screen: typeof LoaderScreen;
 };
 
-export const Loader: LoaderComponent = ({ color = Colors.blue[500], size = 16, thickness = 2 }) => {
+export const Loader: LoaderComponent = ({
+  color = Colors.blue[500],
+  size = 16,
+  thickness = 2,
+  className,
+}) => {
   const styles = useStyles({ color, size, thickness });
 
   return (
-    <div className={styles.wrapper}>
+    <div className={classNames(styles.wrapper, className)}>
       <span className={classNames(styles.item, styles.item1)} />
       <span className={classNames(styles.item, styles.item2)} />
       <span className={classNames(styles.item, styles.item3)} />

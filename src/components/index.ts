@@ -25,3 +25,4 @@ export { default as Modal } from './modal';
 export { default as Padding } from './padding';
 export { default as TextButton } from './text-button';
 export { default as TextField } from './text-field';
+export { default as Toggle } from './toggle';

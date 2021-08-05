@@ -1,0 +1,70 @@
+$default-handle-size: 18px;
+$small-handle-size: 12px;
+
+.button {
+  --handle-size: #{$default-handle-size};
+
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: calc((var(--handle-size) + 4px) * 2);
+  height: calc(var(--handle-size) + 4px);
+  line-height: calc(var(--handle-size) + 4px);
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+
+  .handle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: var(--handle-size);
+    height: var(--handle-size);
+    transition: all .2s ease-in-out;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      border-radius: 9px;
+      box-shadow: 0 2px 4px #00230b33;
+      transition: all .2s ease-in-out;
+      content: "";
+    }
+  }
+
+  .inner {
+    display: grid;
+    place-items: center;
+    margin: 0 7px 0 calc(var(--handle-size) + 2px);
+    color: #fff;
+    transition: margin .2s;
+  }
+
+  .loader {
+    top: 1px;
+  }
+
+  &__small {
+    --handle-size: #{$small-handle-size};
+
+    .loader {
+      top: -1px;
+    }
+  }
+
+  &__checked {
+    .handle {
+      left: calc(100% - var(--handle-size) - 2px);
+    }
+
+    .inner {
+      margin: 0 calc(var(--handle-size) + 2px) 0 7px;
+    }
+  }
+
+  &__disabled {}
+}
