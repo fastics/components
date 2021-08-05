@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import { FC } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../color';
@@ -50,9 +50,7 @@ const useValueStyles = createUseStyles({
   }),
 });
 
-export const LinearProgressIndicator: React.FC<LinearProgressIndicatorProps> = (props) => {
-  const { value, ...rest } = props;
-
+export const LinearProgressIndicator: FC<LinearProgressIndicatorProps> = ({ value, ...rest }) => {
   if (value > 100)
     throw new RangeError('[LinearProgressIndicator] - The value should not exceed 100');
 

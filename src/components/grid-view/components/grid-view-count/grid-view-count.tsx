@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Children, cloneElement, useEffect } from 'react';
+import { Children, cloneElement, FC, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Padding from '../../../padding';
@@ -98,7 +98,7 @@ const useStyles = createUseStyles({
   },
 });
 
-export const GridViewCount: React.FC<GridViewCountProps> = ({ children, className, ...props }) => {
+export const GridViewCount: FC<GridViewCountProps> = ({ children, className, ...props }) => {
   const styles = useStyles(props);
 
   /**

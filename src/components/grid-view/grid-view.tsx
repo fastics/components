@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 
 import GridViewCount from './components/grid-view-count';
 
 interface GridViewProps {}
 
-type GridViewComponent = React.FC<GridViewProps> & {
+type GridViewComponent = FC<GridViewProps> & {
   Count: typeof GridViewCount;
 };
 

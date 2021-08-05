@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 
 import Colors from '../../../colors';
 import GridViewCount from './grid-view-count';

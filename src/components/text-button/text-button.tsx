@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { MouseEventHandler, ReactChild, useCallback } from 'react';
+import { FC, MouseEvent, MouseEventHandler, ReactChild, useCallback } from 'react';
 
 import styles from './text-button.module.scss';
 
@@ -26,10 +26,10 @@ export interface TextButtonProps {
  * @see [OutlinedButton], a [TextButton] with a border outline.
  * @see [ElevatedButton], a filled button whose material elevates when pressed.
  */
-export const TextButton: React.FC<TextButtonProps> = ({ onPress, children, className }) => {
+export const TextButton: FC<TextButtonProps> = ({ onPress, children, className }) => {
   // Handle click event
   const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
 
       if (onPress) {

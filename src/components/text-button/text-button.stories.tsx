@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 
 import TextButton from './text-button';
 import styles from './text-button.stories.module.scss';

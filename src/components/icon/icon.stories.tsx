@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 
 import { EXCLUDED_CONTROLS } from '../../../.storybook/constants';
 import Colors from '../colors';

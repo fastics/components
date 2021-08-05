@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC, InputHTMLAttributes } from 'react';
 
 import useTextEditingController, { UseTextEditingController } from './useTextEditingController';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * If you want to control the input directly, pass in a controller.
    * Use it like this
@@ -13,7 +13,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   controller?: UseTextEditingController;
 }
 
-export const Input: React.FC<InputProps> = ({ controller, ...props }) => {
+export const Input: FC<InputProps> = ({ controller, ...props }) => {
   const _controller2 = useTextEditingController({ listenValue: false });
   const _controller = controller || _controller2;
 

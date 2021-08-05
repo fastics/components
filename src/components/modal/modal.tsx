@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React from 'react';
+import { FC, ReactChild, ReactChildren } from 'react';
 
 import Icon from '../icon';
 import IconButton from '../icon-button';
@@ -28,12 +28,12 @@ interface ModalProps {
    * @default true
    */
   withOverlay?: boolean;
-  children: React.ReactChild | React.ReactChildren;
+  children: ReactChild | ReactChildren;
   classNames?: ModalClassNames;
   title: string;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal: FC<ModalProps> = ({
   onClose,
   withOverlay = true,
   children,

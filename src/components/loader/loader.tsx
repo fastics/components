@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import { FC } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../color';
@@ -58,7 +58,7 @@ const useStyles = createUseStyles({
   },
 });
 
-type LoaderComponent = React.FC<LoaderProps> & {
+type LoaderComponent = FC<LoaderProps> & {
   Screen: typeof LoaderScreen;
 };
 

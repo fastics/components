@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
 import Duration from '../duration';
