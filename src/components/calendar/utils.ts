@@ -1,6 +1,11 @@
 import DateTime from '../date-time';
 import { CalendarEvent } from './types';
 
+/**
+ * Returns all events occurring `month` month.
+ *
+ * It's used to get a subset of events, to be able to process fast.
+ */
 export const filterCalendarEvents = (month: DateTime, events: CalendarEvent[]) => {
   const firstDayOfFirstMonthWeek = month.getFirstDayOfMonthWeek();
   const lastDayOfFirstMonthWeek = month.getLastDayOfMonthWeek();
@@ -12,6 +17,12 @@ export const filterCalendarEvents = (month: DateTime, events: CalendarEvent[]) =
   );
 };
 
+/**
+ * Returns all events occurring `date` day.
+ *
+ * You should filter events by month first to avoid processing useless data.
+ * @see filterCalendarEvents
+ */
 export const getEventsThatDay = (date: DateTime, events: CalendarEvent[]) => {
   const start = new DateTime({
     year: date.year,

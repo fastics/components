@@ -1,17 +1,13 @@
 import classnames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
 
-import Color from '../color';
 import DateTime from '../date-time';
 import Duration from '../duration';
-import Icon from '../icon';
-import IconButton from '../icon-button';
-import Icons from '../icons';
 import classes from './calendar.module.scss';
-import { DAYS, MONTHS, SupportedLocales } from './constants';
-import eventClasses from './event.module.scss';
+import { CalendarTop, Days, MonthDays } from './components';
+import { SupportedLocales } from './constants';
 import { CalendarEvent, Day } from './types';
-import { filterCalendarEvents, getEventsThatDay } from './utils';
+import { filterCalendarEvents } from './utils';
 
 interface CalendarProps {
   /**
@@ -45,10 +41,13 @@ export const Calendar: React.FC<CalendarProps> = ({
   events,
   dark,
 }) => {
-  const date: DateTime =
-    typeof initialValue === 'number'
-      ? DateTime.fromMillisecondsSinceEpoch(initialValue)
-      : initialValue;
+  const date = useMemo<DateTime>(
+    () =>
+      typeof initialValue === 'number'
+        ? DateTime.fromMillisecondsSinceEpoch(initialValue)
+        : initialValue,
+    [initialValue],
+  );
 
   const [currentDate, setCurrentDate] = useState(date);
 
@@ -60,70 +59,22 @@ export const Calendar: React.FC<CalendarProps> = ({
     setCurrentDate((dt) => dt.add(Duration.days(30.4)));
   }, []);
 
-  const localizedDays = DAYS[locale];
-
   const filteredEvents = useMemo(() => {
     return events && filterCalendarEvents(currentDate, events);
   }, [currentDate, events]);
 
   return (
     <div className={classnames(classes.calendar, { [classes.calendar__dark]: dark })}>
-      <div className={classes.top}>
-        <IconButton
-          onPress={handlePrevClick}
-          icon={<Icon icon={Icons.arrow_left} color={new Color(0xff99a1a7)} />}
-        />
-
-        <div className={classes.center}>
-          <span>{MONTHS[locale][currentDate.month - 1]}</span>
-          <span>{currentDate.year}</span>
-        </div>
-
-        <IconButton
-          onPress={handleNextClick}
-          icon={<Icon icon={Icons.arrow_right} color={new Color(0xff99a1a7)} />}
-        />
-      </div>
+      <CalendarTop
+        currentDate={currentDate}
+        onPrevClick={handlePrevClick}
+        onNextClick={handleNextClick}
+        locale={locale}
+      />
 
       <div className={classes.inner}>
-        {localizedDays.map((day) => (
-          <span key={day} className={classnames(classes.day_name)}>
-            {formatDay(day)}
-          </span>
-        ))}
-
-        {currentDate.getDaysInMonth().map((dateTime) => {
-          const eventsThatDay = filteredEvents && getEventsThatDay(dateTime, filteredEvents);
-
-          return (
-            <span
-              key={dateTime.millisecondsSinceEpoch}
-              className={classnames(classes.cell, {
-                [classes.cell__out_of_range]: !dateTime.isInSameMonth(currentDate),
-              })}
-            >
-              <span
-                className={classnames(classes.day_number, {
-                  [classes.day_number__current]: dateTime.isToday(),
-                })}
-              >
-                {dateTime.day}
-              </span>
-
-              <div className={eventClasses.events}>
-                {eventsThatDay?.map((event) => (
-                  <div key={event.date.millisecondsSinceEpoch} className={eventClasses.event}>
-                    <span>{event.title}</span>
-                    <span className={eventClasses.hour}>
-                      {event.date.hour.toString().padStart(2, '0')}:
-                      {event.date.minute.toString().padStart(2, '0')}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </span>
-          );
-        })}
+        <Days locale={locale} formatDay={formatDay} />
+        <MonthDays currentDate={currentDate} events={filteredEvents} />
       </div>
     </div>
   );

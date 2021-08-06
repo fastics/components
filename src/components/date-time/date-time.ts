@@ -10,6 +10,16 @@ interface DateTimeConstructor {
   millisecond?: number;
 }
 
+interface DateTimeSetOptions {
+  year?: number;
+  month?: number;
+  day?: number;
+  hour?: number;
+  minute?: number;
+  second?: number;
+  millisecond?: number;
+}
+
 const _twoDigits = (n: number) => n.toString().padStart(2, '0');
 const _threeDigits = (n: number) => n.toString().padStart(3, '0');
 const _fourDigits = (n: number) => n.toString().padStart(4, '0');
@@ -328,17 +338,17 @@ class DateTime {
   }
 
   /**
-   * Returns a new [DateTime] instance with a different day.
+   * Returns a new [DateTime] instance with different parameters.
    */
-  public setDay(nextDay: number) {
+  public set(dateOptions: DateTimeSetOptions) {
     return new DateTime({
-      year: this.year,
-      month: this.month,
-      day: nextDay,
-      hour: this.hour,
-      minute: this.minute,
-      second: this.second,
-      millisecond: this.millisecond,
+      year: dateOptions.year ?? this.year,
+      month: dateOptions.month ?? this.month,
+      day: dateOptions.day ?? this.day,
+      hour: dateOptions.hour ?? this.hour,
+      minute: dateOptions.minute ?? this.minute,
+      second: dateOptions.second ?? this.second,
+      millisecond: dateOptions.millisecond ?? this.millisecond,
     });
   }
 
@@ -381,7 +391,7 @@ class DateTime {
   //#region Utils
   public getFirstDayOfMonthWeek = () => {
     // First we go to the first day of the month
-    let nextDate = this.setDay(1);
+    let nextDate = this.set({ day: 1 });
 
     /**
      * While date is not monday, we go in past.

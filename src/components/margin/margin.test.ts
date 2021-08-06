@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 import Margin from './margin';
 
 describe('Margin', () => {

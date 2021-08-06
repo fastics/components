@@ -157,9 +157,16 @@ describe('DateTime', () => {
       expect(finalDate.isAtSameMomentAs(expected50daysAgo)).toBe(true);
     });
 
-    it('`setDay` should return correct value', () => {
+    it('`set` with no param should return same date', () => {
       const date = new DateTime({ year: 2021, month: 8, day: 6 });
-      const nextDate = date.setDay(1);
+      const nextDate = date.set({});
+
+      expect(date.isAtSameMomentAs(nextDate)).toBe(true);
+    });
+
+    it('`set` should return correct value', () => {
+      const date = new DateTime({ year: 2021, month: 8, day: 6 });
+      const nextDate = date.set({ day: 1 });
 
       expect(date.day).toBe(6);
       expect(nextDate.year).toBe(2021);

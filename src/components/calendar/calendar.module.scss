@@ -1,6 +1,8 @@
 .calendar {
   --border-color: rgba(166, 168, 179, 0.12);
   --secondary-color: #99a1a7;
+  --color-stripe-1: transparent;
+  --color-stripe-2: #f5f5f5;
 
   transition: all .3s ease;
 
@@ -12,28 +14,11 @@
   &__dark {
     --border-color: rgba(166, 168, 179, 0.12);
     --secondary-color: #99a1a7;
+    --color-stripe-1: transparent;
+    --color-stripe-2: #3e3e3e;
+
     background-color: #262626;
-
     color: #fff;
-
-    .cell {
-      --color-1: transparent;
-      --color-2: #3e3e3e;
-    }
-  }
-}
-
-.header {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-transform: uppercase;
-  place-items: center;
-  border-top: 1px solid var(--border-color);
-  color: var(--secondary-color);
-  border-bottom: 1px solid rgba(166, 168, 179, 0.12);
-
-  .cell {
-    padding: 24px;
   }
 }
 
@@ -44,98 +29,4 @@
   grid-auto-rows: minmax(80px, 1fr);
   overflow: auto;
   flex: 1;
-
-  .cell {
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-
-    // Targets every first row cell
-    &:nth-child(7n + 1) {
-      border-left: 1px solid var(--border-color);
-    }
-
-    // Target 7 first children cell
-    &:nth-child(-n + 7) {
-      border-top: 1px solid var(--border-color);
-    }
-
-    &__out_of_range {
-      border-color: transparent;
-    }
-  }
-}
-
-.cell {
-  --color-1: transparent;
-  --color-2: #f5f5f5;
-
-  position: relative;
-  overflow: auto;
-
-  &__out_of_range {
-    background-image: repeating-linear-gradient(
-      135deg,
-      var(--color-1),
-      var(--color-1) 10px,
-      var(--color-2) 10px,
-      var(--color-2) 20px
-    );
-  }
-}
-
-.day_number {
-  position: sticky;
-  top: 10px;
-  right: 10px;
-  left: calc(100% - 20px);
-  color: var(--secondary-color);
-  font-size: 14px;
-
-  &__current {
-    --circle-size: 28px;
-
-    border-radius: 50%;
-    background-color: red;
-    color: white;
-    width: var(--circle-size);
-    height: var(--circle-size);
-    display: inline-grid;
-    place-items: center;
-    top: 4px;
-    right: 4px;
-    left: calc(100% - 32px);
-  }
-}
-
-.day_name {
-  font-size: 12px;
-  text-transform: uppercase;
-  color: var(--secondary-color);
-  text-align: center;
-  line-height: 50px;
-  font-weight: 500;
-  border-bottom: 1px solid var(--border-color);
-  border-top: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
-
-  &:first-child {
-    border-left: 1px solid var(--border-color);
-  }
-}
-
-.top {
-  max-width: 400px;
-  align-items: center;
-  margin: 12px auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  place-items: center;
-  color: var(--secondary-color);
-
-  .center {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    place-items: center;
-  }
 }
