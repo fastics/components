@@ -1,0 +1,32 @@
+.calendar {
+  --border-color: rgba(166, 168, 179, 0.12);
+  --secondary-color: #99a1a7;
+  --color-stripe-1: transparent;
+  --color-stripe-2: #f5f5f5;
+
+  transition: all .3s ease;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  &__dark {
+    --border-color: rgba(166, 168, 179, 0.12);
+    --secondary-color: #99a1a7;
+    --color-stripe-1: transparent;
+    --color-stripe-2: #3e3e3e;
+
+    background-color: #262626;
+    color: #fff;
+  }
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  grid-template-rows: 50px;
+  grid-auto-rows: minmax(80px, 1fr);
+  overflow: auto;
+  flex: 1;
+}

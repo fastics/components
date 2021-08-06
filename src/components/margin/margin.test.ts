@@ -35,10 +35,26 @@ margin-bottom: 32px;`);
 
     it('should return correct value', () => {
       expect(Margin.only({ top: 12 }).toStyledCSS()?.includes(`margin-top: 12px;`)).toBe(true);
+      // expect(Margin.all(12).toStyledCSS()?.includes(`margin-left: 12px;`)).toBe(true);
+      const m = Margin.all(12).toStyledCSS();
+
+      expect(m?.includes('margin-left: 12px;')).toBe(true);
+      expect(m?.includes('margin-right: 12px;')).toBe(true);
+      expect(m?.includes('margin-top: 12px;')).toBe(true);
+      expect(m?.includes('margin-bottom: 12px;')).toBe(true);
     });
   });
 
   describe('.copyWith method', () => {
+    it('should do nothing if params are empty', () => {
+      const { top, right, bottom, left } = Margin.all(32).copyWith({});
+
+      expect(top).toEqual(32);
+      expect(right).toEqual(32);
+      expect(bottom).toEqual(32);
+      expect(left).toEqual(32);
+    });
+
     it('should override correctly', () => {
       const { top, right, bottom, left } = Margin.all(32).copyWith({ top: 0 });
 

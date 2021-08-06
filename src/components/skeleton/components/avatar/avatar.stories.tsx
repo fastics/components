@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 
-import Colors from '../../../colors';
 import SkeletonContext from '../../context/skeleton-context';
 import SkeletonAvatar from './avatar';
 
@@ -40,7 +39,6 @@ export const WithAnotherColor = Template.bind({});
 WithAnotherColor.args = {
   shape: 'circle',
   size: 'default',
-  color: Colors.red[200],
 };
 
 export const WithCustomSizes = Template.bind({});

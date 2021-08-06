@@ -49,6 +49,12 @@ describe('EdgeInsets', () => {
 
   describe('.only constructor', () => {
     it('should return correct value in all cases', () => {
+      const onlyNothing = EdgeInsets.only();
+      expect(onlyNothing.top).toEqual(null);
+      expect(onlyNothing.right).toEqual(null);
+      expect(onlyNothing.bottom).toEqual(null);
+      expect(onlyNothing.left).toEqual(null);
+
       const onlyTop = EdgeInsets.only({ top: 12 });
       expect(onlyTop.top).toEqual(12);
       expect(onlyTop.right).toEqual(null);

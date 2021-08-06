@@ -5,6 +5,7 @@ describe('Duration', function () {
     it('should correctly work with microseconds', () => {
       expect(new Duration({ microseconds: 0 }).inMicroseconds).toEqual(0);
       expect(new Duration({ microseconds: 500 }).inMicroseconds).toEqual(500);
+      expect(Duration.microseconds(500).inMicroseconds).toEqual(500);
     });
 
     it('should correctly work with milliseconds', () => {
@@ -20,6 +21,7 @@ describe('Duration', function () {
     it('should correctly work with minutes', () => {
       expect(new Duration({ minutes: 0 }).inMicroseconds).toEqual(0);
       expect(new Duration({ minutes: 20 }).inMicroseconds).toEqual(1200000000);
+      expect(Duration.minutes(20).inMicroseconds).toEqual(1200000000);
     });
 
     it('should correctly work with hours', () => {
