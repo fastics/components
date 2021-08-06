@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import DateTime from '../date-time';
 import Calendar from './calendar';
 import classes from './calendar.stories.module.scss';
 import { SupportedLocales } from './constants';
@@ -21,6 +22,6 @@ const Template: ComponentStory<typeof Calendar> = (args) => <Calendar {...args} 
 export const Default = Template.bind({});
 Default.args = {
   locale: SupportedLocales.FR,
-  value: new Date(),
+  value: DateTime.now(),
   // value: new Date(1991, 10, 21),
 };
