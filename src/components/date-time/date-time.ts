@@ -258,6 +258,38 @@ class DateTime {
   }
 
   /**
+   * Returns true if this occurs at same moment or after other.
+   *
+   * @example
+   * const now = DateTime.now();
+   * const earlier = now.subtract(Duration.days(2));
+   * const later = now.add(Duration.days(2));
+   *
+   * assert(now.isSameOrAfter(now))
+   * assert(now.isSameOrAfter(earlier))
+   * assert(!now.isSameOrAfter(later))
+   */
+  public isSameOrAfter(other: DateTime) {
+    return this.isAfter(other) || this.isAtSameMomentAs(other);
+  }
+
+  /**
+   * Returns true if this occurs at same moment or before other.
+   *
+   * @example
+   * const now = DateTime.now();
+   * const earlier = now.subtract(Duration.days(2));
+   * const later = now.add(Duration.days(2));
+   *
+   * assert(now.isSameOrBefore(now))
+   * assert(now.isSameOrBefore(later))
+   * assert(!now.isSameOrBefore(earlier))
+   */
+  public isSameOrBefore(other: DateTime) {
+    return this.isBefore(other) || this.isAtSameMomentAs(other);
+  }
+
+  /**
    * Returns true if this occurs after other.
    *
    * @example
@@ -272,6 +304,27 @@ class DateTime {
     const d2 = other.millisecondsSinceEpoch;
 
     return d1 - d2 < 0;
+  }
+
+  /**
+   * Returns true if this occurs between date1 and date2, or between date2 and date1.
+   *
+   * @example
+   * const now = DateTime.now();
+   * const earlier = now.subtract(Duration.days(2));
+   * const later = now.add(Duration.days(2));
+   *
+   * assert(now.isBetween(earlier, later))
+   * assert(now.isBetween(later, earlier))
+   * assert(!later.isBetween(now, earlier))
+   * assert(!earlier.isBetween(now, later))
+   * assert(now.isBetween(now, later))
+   */
+  public isBetween(date1: DateTime, date2: DateTime) {
+    return (
+      (this.isSameOrAfter(date1) && this.isSameOrBefore(date2)) ||
+      (this.isSameOrBefore(date1) && this.isSameOrAfter(date2))
+    );
   }
 
   /**
@@ -339,6 +392,11 @@ class DateTime {
     }
 
     return nextDate;
+  };
+
+  public getLastDayOfMonthWeek = () => {
+    const daysInMonth = this.getDaysInMonth();
+    return daysInMonth.reverse()[0];
   };
 
   /**

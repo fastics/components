@@ -209,6 +209,18 @@ describe('DateTime', () => {
       expect(now.isBefore(now)).toBe(false);
     });
 
+    it('`isBetween` should return correct value', () => {
+      const now = DateTime.now();
+      const earlier = now.subtract(Duration.days(2));
+      const later = now.add(Duration.days(2));
+
+      expect(now.isBetween(earlier, later)).toBe(true);
+      expect(now.isBetween(later, earlier)).toBe(true);
+      expect(later.isBetween(now, earlier)).toBe(false);
+      expect(earlier.isBetween(now, later)).toBe(false);
+      expect(now.isBetween(now, later)).toBe(true);
+    });
+
     it('`toIso8601String` should work', () => {
       expect(new DateTime({ year: 2021, month: 8, day: 6 }).toIso8601String()).toBe(
         '2021-08-06T00:00:00.000',
@@ -244,6 +256,13 @@ describe('DateTime', () => {
       const expectedDate = new DateTime({ year: 2021, month: 7, day: 26 });
 
       expect(date.getFirstDayOfMonthWeek().isAtSameMomentAs(expectedDate)).toBe(true);
+    });
+
+    it('`getLastDayOfMonthWeek` should return correct value', () => {
+      const date = new DateTime({ year: 2021, month: 8, day: 6 });
+      const expectedDate = new DateTime({ year: 2021, month: 9, day: 5 });
+
+      expect(date.getLastDayOfMonthWeek().isAtSameMomentAs(expectedDate)).toBe(true);
     });
 
     it('`getDaysInMonth` should return correct value', () => {

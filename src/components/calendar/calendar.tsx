@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import Color from '../color';
 import DateTime from '../date-time';
@@ -9,7 +9,9 @@ import IconButton from '../icon-button';
 import Icons from '../icons';
 import classes from './calendar.module.scss';
 import { DAYS, MONTHS, SupportedLocales } from './constants';
-import { Day } from './types';
+import eventClasses from './event.module.scss';
+import { CalendarEvent, Day } from './types';
+import { filterCalendarEvents, getEventsThatDay } from './utils';
 
 interface CalendarProps {
   /**
@@ -28,6 +30,8 @@ interface CalendarProps {
    * @default (value) => value.substr(0, 3)
    */
   formatDay?: (day: Day) => string;
+  events?: CalendarEvent[];
+  dark?: boolean;
 }
 
 /**
@@ -38,6 +42,8 @@ export const Calendar: React.FC<CalendarProps> = ({
   initialValue = DateTime.now(),
   locale = SupportedLocales.EN,
   formatDay = (value) => value.substr(0, 3),
+  events,
+  dark,
 }) => {
   const date: DateTime =
     typeof initialValue === 'number'
@@ -56,8 +62,12 @@ export const Calendar: React.FC<CalendarProps> = ({
 
   const localizedDays = DAYS[locale];
 
+  const filteredEvents = useMemo(() => {
+    return events && filterCalendarEvents(currentDate, events);
+  }, [currentDate, events]);
+
   return (
-    <div className={classes.calendar}>
+    <div className={classnames(classes.calendar, { [classes.calendar__dark]: dark })}>
       <div className={classes.top}>
         <IconButton
           onPress={handlePrevClick}
@@ -82,22 +92,38 @@ export const Calendar: React.FC<CalendarProps> = ({
           </span>
         ))}
 
-        {currentDate.getDaysInMonth().map((dateTime) => (
-          <span
-            key={dateTime.millisecondsSinceEpoch}
-            className={classnames(classes.cell, {
-              [classes.cell__out_of_range]: !dateTime.isInSameMonth(currentDate),
-            })}
-          >
+        {currentDate.getDaysInMonth().map((dateTime) => {
+          const eventsThatDay = filteredEvents && getEventsThatDay(dateTime, filteredEvents);
+
+          return (
             <span
-              className={classnames(classes.day_number, {
-                [classes.day_number__current]: dateTime.isToday(),
+              key={dateTime.millisecondsSinceEpoch}
+              className={classnames(classes.cell, {
+                [classes.cell__out_of_range]: !dateTime.isInSameMonth(currentDate),
               })}
             >
-              {dateTime.day}
+              <span
+                className={classnames(classes.day_number, {
+                  [classes.day_number__current]: dateTime.isToday(),
+                })}
+              >
+                {dateTime.day}
+              </span>
+
+              <div className={eventClasses.events}>
+                {eventsThatDay?.map((event) => (
+                  <div key={event.date.millisecondsSinceEpoch} className={eventClasses.event}>
+                    <span>{event.title}</span>
+                    <span className={eventClasses.hour}>
+                      {event.date.hour.toString().padStart(2, '0')}:
+                      {event.date.minute.toString().padStart(2, '0')}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </span>
-          </span>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
