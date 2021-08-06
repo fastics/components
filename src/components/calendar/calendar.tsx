@@ -1,17 +1,23 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
+import Color from '../color';
 import DateTime from '../date-time';
+import Duration from '../duration';
+import Icon from '../icon';
+import IconButton from '../icon-button';
+import Icons from '../icons';
 import classes from './calendar.module.scss';
 import { DAYS, MONTHS, SupportedLocales } from './constants';
 import { Day } from './types';
 
 interface CalendarProps {
   /**
-   * Current selected date. Can be a timestamp or a Date.
-   * @default new Date()
+   * Initial selected date. Can be a timestamp or a [DateTime].
+   * @default DateTime.now()
+   * @see DateTime
    */
-  value?: DateTime | number;
+  initialValue?: DateTime | number;
   /**
    * Set locale for months and days.
    * @default SupportedLocales.EN
@@ -29,34 +35,58 @@ interface CalendarProps {
  * @see DateTime
  */
 export const Calendar: React.FC<CalendarProps> = ({
-  value = DateTime.now(),
+  initialValue = DateTime.now(),
   locale = SupportedLocales.EN,
   formatDay = (value) => value.substr(0, 3),
 }) => {
   const date: DateTime =
-    typeof value === 'number' ? DateTime.fromMillisecondsSinceEpoch(value) : value;
+    typeof initialValue === 'number'
+      ? DateTime.fromMillisecondsSinceEpoch(initialValue)
+      : initialValue;
+
+  const [currentDate, setCurrentDate] = useState(date);
+
+  const handlePrevClick = useCallback(() => {
+    setCurrentDate((dt) => dt.subtract(Duration.days(365.25 / 12)));
+  }, []);
+
+  const handleNextClick = useCallback(() => {
+    setCurrentDate((dt) => dt.add(Duration.days(30.4)));
+  }, []);
 
   const localizedDays = DAYS[locale];
 
   return (
     <div className={classes.calendar}>
-      <span>{MONTHS[locale][date.month - 1]}</span>
-      <span>{date.year}</span>
+      <div className={classes.top}>
+        <IconButton
+          onPress={handlePrevClick}
+          icon={<Icon icon={Icons.arrow_left} color={new Color(0xff99a1a7)} />}
+        />
 
-      <div className={classes.header}>
+        <div className={classes.center}>
+          <span>{MONTHS[locale][currentDate.month - 1]}</span>
+          <span>{currentDate.year}</span>
+        </div>
+
+        <IconButton
+          onPress={handleNextClick}
+          icon={<Icon icon={Icons.arrow_right} color={new Color(0xff99a1a7)} />}
+        />
+      </div>
+
+      <div className={classes.inner}>
         {localizedDays.map((day) => (
-          <span key={day} className={classes.cell}>
+          <span key={day} className={classnames(classes.day_name)}>
             {formatDay(day)}
           </span>
         ))}
-      </div>
 
-      <div className={classes.content}>
-        {date.getDaysInMonth().map((dateTime) => (
+        {currentDate.getDaysInMonth().map((dateTime) => (
           <span
             key={dateTime.millisecondsSinceEpoch}
             className={classnames(classes.cell, {
-              [classes.cell__out_of_range]: !dateTime.isInSameMonth(date),
+              [classes.cell__out_of_range]: !dateTime.isInSameMonth(currentDate),
             })}
           >
             <span

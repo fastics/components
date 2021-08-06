@@ -1,5 +1,6 @@
 .calendar {
-  --border-color: #e5e5e5;
+  --border-color: rgba(166, 168, 179, 0.12);
+  --secondary-color: #99a1a7;
 
   flex: 1;
   display: flex;
@@ -12,15 +13,20 @@
   text-transform: uppercase;
   place-items: center;
   border-top: 1px solid var(--border-color);
+  color: var(--secondary-color);
+  border-bottom: 1px solid rgba(166, 168, 179, 0.12);
 
   .cell {
     padding: 24px;
   }
 }
 
-.content {
+.inner {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  grid-template-rows: 50px;
+  grid-auto-rows: minmax(80px, 1fr);
+  overflow: auto;
   flex: 1;
 
   .cell {
@@ -60,7 +66,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  color: grey;
+  color: var(--secondary-color);
   font-size: 14px;
 
   &__current {
@@ -75,5 +81,38 @@
     place-items: center;
     top: 4px;
     right: 4px;
+  }
+}
+
+.day_name {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  text-align: center;
+  line-height: 50px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+
+  &:first-child {
+    border-left: 1px solid var(--border-color);
+  }
+}
+
+.top {
+  max-width: 400px;
+  align-items: center;
+  margin: 12px auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  place-items: center;
+  color: var(--secondary-color);
+
+  .center {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
   }
 }

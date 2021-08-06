@@ -9,7 +9,7 @@ export default {
   title: 'Calendar',
   component: Calendar,
   argTypes: {
-    value: { control: { type: 'date' } },
+    initialValue: { control: { type: 'date' } },
   },
   parameters: {
     layout: 'fullscreen',
@@ -22,6 +22,6 @@ const Template: ComponentStory<typeof Calendar> = (args) => <Calendar {...args} 
 export const Default = Template.bind({});
 Default.args = {
   locale: SupportedLocales.FR,
-  value: DateTime.now(),
-  // value: new Date(1991, 10, 21),
+  initialValue: DateTime.now(),
+  // initialValue: new Date(1991, 10, 21),
 };
