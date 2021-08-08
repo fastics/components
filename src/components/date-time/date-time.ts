@@ -71,6 +71,10 @@ class DateTime {
   //#region Constructors
   /**
    * Constructs a new [DateTime] instance with the given `millisecondsSinceEpoch`.
+   *
+   * @example
+   * const dateTime = DateTime.fromMillisecondsSinceEpoch(690678000000) // 1991-11-21
+   * const dateTime = DateTime.fromMillisecondsSinceEpoch(new Date(1991, 10, 21).getTime())
    */
   static fromMillisecondsSinceEpoch = (millisecondsSinceEpoch: number) => {
     const date = new Date(millisecondsSinceEpoch);
@@ -99,7 +103,13 @@ class DateTime {
   /**
    * Constructs a new [DateTime] instance based on `formattedString`.
    *
-   * Throws a `EvalError` if the input string cannot be parsed
+   * Throws a `EvalError` if the input string cannot be parsed.
+   *
+   * @example
+   * const dateTime = DateTime.parse("1991-11-21")
+   * const badDate = DateTime.parse("hello") // throw EvalError
+   *
+   * @throws EvalError
    */
   static parse(formattedString: string) {
     if (isNaN(Date.parse(formattedString)))
@@ -111,6 +121,10 @@ class DateTime {
    * Constructs a new [DateTime] instance based on `formattedString`.
    *
    * Works like `parse` except that this function returns `null` where parse would throw a EvalError.
+   *
+   * @example
+   * const dateTime = DateTime.tryParse("1991-11-21") // OK
+   * const badDate = DateTime.tryParse("hello") // returns null
    */
   static tryParse(formattedString: string) {
     try {
@@ -124,6 +138,9 @@ class DateTime {
   //#region Properties
   /**
    * The day of the month 1..31.
+   *
+   * @example
+   * const thisDay = DateTime.now().day // 8
    */
   public get day() {
     return this.date.getDate();
@@ -131,6 +148,9 @@ class DateTime {
 
   /**
    * The hour of the day, expressed as in a 24-hour clock 0..23
+   *
+   * @example
+   * const thisHour = DateTime.now().hour // 21
    */
   public get hour() {
     return this.date.getHours();
@@ -138,6 +158,9 @@ class DateTime {
 
   /**
    * The millisecond 0...999.
+   *
+   * @example
+   * const thisMs = DateTime.now().millisecond // 923
    */
   public get millisecond() {
     return this.date.getMilliseconds();
@@ -145,6 +168,9 @@ class DateTime {
 
   /**
    * The number of milliseconds since the "Unix epoch" 1970-01-01T00:00:00Z (UTC).
+   *
+   * @example
+   * const msEpoch = DateTime.now().millisecondsSinceEpoch // 1628450223122
    */
   public get millisecondsSinceEpoch() {
     return this.date.getTime();
@@ -152,6 +178,9 @@ class DateTime {
 
   /**
    * The minute 0...59.
+   *
+   * @example
+   * const thisMinutes = DateTime.now().minute // 17
    */
   public get minute() {
     return this.date.getMinutes();
@@ -159,6 +188,9 @@ class DateTime {
 
   /**
    * The month 1..12.
+   *
+   * @example
+   * const thisMonth = DateTime.now().month // 8
    */
   public get month() {
     return this.date.getMonth() + 1;
@@ -166,6 +198,9 @@ class DateTime {
 
   /**
    * The second 0...59.
+   *
+   * @example
+   * const thisSecond = DateTime.now().second // 21
    */
   public get second() {
     return this.date.getSeconds();
@@ -173,6 +208,9 @@ class DateTime {
 
   /**
    * The time zone name.
+   *
+   * @example
+   * const tzName = DateTime.now().timeZoneName // GMT
    */
   public get timeZoneName() {
     const match = this.date.toString().match(/([A-Z]{2,})/);
@@ -183,6 +221,9 @@ class DateTime {
    * The time zone offset, which is the difference between local time and UTC.
    *
    * The offset is positive for time zones east of UTC.
+   *
+   * @example
+   * const tzOffset = DateTime.now().timeZoneOffset // Duration({hours: 2})
    */
   public get timeZoneOffset() {
     // const duration = new Duration()
@@ -198,7 +239,10 @@ class DateTime {
   }
 
   /**
-   * The day of the week monday..sunday.
+   * The day of the week [DateTime.monday]..[DateTime.sunday].
+   *
+   * @example
+   * const weekDay = DateTime.now().weekDay // DateTime.sunday or 7
    */
   public get weekDay() {
     return (this.date.getDay() === 0 ? 7 : this.date.getDay()) as 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -206,6 +250,9 @@ class DateTime {
 
   /**
    * The year.
+   *
+   * @example
+   * const year = DateTime.now().year // 2021
    */
   public get year() {
     return this.date.getFullYear();
@@ -215,6 +262,10 @@ class DateTime {
   //#region Methods
   /**
    * Returns a new [DateTime] instance with duration added to this.
+   *
+   * @example
+   * const current = DateTime.now() // 2021-08-08
+   * const oneYearLater = current.add(Duration.years(1)) // 2022-08-08
    */
   public add(duration: Duration) {
     const time = this.millisecondsSinceEpoch;
@@ -226,6 +277,16 @@ class DateTime {
    * Returns a [Duration] with the difference when subtracting other from this.
    *
    * The returned [Duration] will be negative if `other` occurs after this.
+   *
+   * @example
+   * const date1 = new DateTime({ year: 2021, month: 8, day: 6 });
+   * const date2 = new DateTime({ year: 2021, month: 8, day: 9 });
+   *
+   * const duration = date1.difference(date2);
+   * const duration2 = date2.difference(date1);
+   *
+   * assert(duration.inDays === 3)
+   * assert(duration2.inDays === -3)
    */
   public difference(other: DateTime) {
     const d1 = this.millisecondsSinceEpoch;
@@ -339,6 +400,10 @@ class DateTime {
 
   /**
    * Returns a new [DateTime] instance with different parameters.
+   *
+   * @example
+   * const dateTime = DateTime.now() // 2021-08-08
+   * const firstDayOfMonth = dateTime.set({ day: 1 }) // 2021-08-01
    */
   public set(dateOptions: DateTimeSetOptions) {
     return new DateTime({
@@ -438,12 +503,12 @@ class DateTime {
   /**
    * Check if a given `day` [DateTime] is in the `other` [DateTime].
    */
-  public isInSameMonth = (other: DateTime) => this.month === other.month;
+  public getIsInSameMonth = (other: DateTime) => this.month === other.month;
 
   /**
    * Check if this instance of [DateTime] is today.
    */
-  public isToday = () => {
+  public getIsToday = () => {
     const today = DateTime.now();
 
     return today.year === this.year && today.month === this.month && today.day === this.day;
