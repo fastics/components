@@ -1,6 +1,4 @@
-import classNames from 'classnames';
 import { Children, FC } from 'react';
-import { createUseStyles } from 'react-jss';
 
 import Colors from '../colors';
 import Icon from '../icon';
@@ -21,19 +19,11 @@ interface CarouselProps {
   gap?: number;
 }
 
-const useStyles = createUseStyles({
-  inner: (props: { gap: number }) => ({
-    gap: props.gap,
-  }),
-});
-
 /**
  * This is a simple carousel.
  * You can use it to show a really simple carousel that you can control with chevrons.
  */
 export const Carousel: FC<CarouselProps> = ({ children, gap = 12 }) => {
-  const styles = useStyles({ gap });
-
   const { leftIndicator, rightIndicator, listRef, scrollLeft, scrollRight, itemRef } =
     useCarousel(children);
 
@@ -50,7 +40,7 @@ export const Carousel: FC<CarouselProps> = ({ children, gap = 12 }) => {
         />
       )}
 
-      <ul className={classNames(classes.inner, styles.inner)} ref={listRef}>
+      <ul className={classes.inner} ref={listRef} style={{ gap }}>
         {Children.map(children, (child, index) => (
           <li key={index} className={classes.element} ref={itemRef(index)}>
             {child}
