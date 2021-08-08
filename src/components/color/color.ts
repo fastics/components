@@ -94,7 +94,7 @@ class Color {
       r = x;
       g = 0;
       b = c;
-    } else if (300 <= hue && hue < 360) {
+    } else {
       r = c;
       g = 0;
       b = x;

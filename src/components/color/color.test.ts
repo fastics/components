@@ -154,7 +154,14 @@ describe('Color', () => {
     expect(colorDark.estimateBrightness()).toBe('dark');
   });
 
-  describe('Red HSL', () => {
+  describe('Red HSLA', () => {
+    it('should have alpha to 255 by default', () => {
+      const colorHSLA = Color.fromHSLA(0, 100, 50);
+
+      // @ts-expect-error
+      expect(colorHSLA.alpha).toBe(255);
+    });
+
     it('should return correct RGB from HSL with perfect red', () => {
       const colorHSL = Color.fromHSLA(0, 100, 50, 255);
       const colorRGBA = Color.fromARGB(255, 255, 0, 0);
@@ -226,8 +233,8 @@ describe('Color', () => {
 
   describe('Pink HSL', () => {
     it('should return correct RGB from HSL with light pink', () => {
-      const colorHSL = Color.fromHSLA(300, 100, 50, 255);
-      const colorRGBA = Color.fromARGB(255, 255, 0, 255);
+      const colorHSL = Color.fromHSLA(260, 100, 50, 255);
+      const colorRGBA = Color.fromARGB(255, 85, 0, 255);
 
       // @ts-expect-error
       expect(colorHSL.value).toEqual(colorRGBA.value);
