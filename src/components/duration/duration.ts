@@ -5,6 +5,8 @@ interface DurationIntervals {
   minutes?: number;
   hours?: number;
   days?: number;
+  months?: number;
+  years?: number;
 }
 
 class Duration {
@@ -16,12 +18,16 @@ class Duration {
   static secondsPerMinute = 60;
   static minutesPerHour = 60;
   static hoursPerDay = 24;
+  static daysPerMonth = 365.25 / 12;
+  static monthsPerYear = 12;
 
   static microsecondsPerSecond =
     Duration.microsecondsPerMillisecond * Duration.millisecondsPerSecond;
   static microsecondsPerMinute = Duration.microsecondsPerSecond * Duration.secondsPerMinute;
   static microsecondsPerHour = Duration.microsecondsPerMinute * Duration.minutesPerHour;
   static microsecondsPerDay = Duration.microsecondsPerHour * Duration.hoursPerDay;
+  static microsecondsPerMonth = Duration.microsecondsPerDay * Duration.daysPerMonth;
+  static microsecondsPerYear = Duration.microsecondsPerMonth * Duration.monthsPerYear;
 
   static millisecondsPerMinute = Duration.millisecondsPerSecond * Duration.secondsPerMinute;
   static millisecondsPerHour = Duration.millisecondsPerMinute * Duration.minutesPerHour;
@@ -42,6 +48,8 @@ class Duration {
     minutes = 0,
     hours = 0,
     days = 0,
+    months = 0,
+    years = 0,
   }: DurationIntervals) {
     this._duration =
       microseconds +
@@ -49,7 +57,9 @@ class Duration {
       seconds * Duration.microsecondsPerSecond +
       minutes * Duration.microsecondsPerMinute +
       hours * Duration.microsecondsPerHour +
-      days * Duration.microsecondsPerDay;
+      days * Duration.microsecondsPerDay +
+      months * Duration.microsecondsPerMonth +
+      years * Duration.microsecondsPerYear;
   }
 
   /**
@@ -74,9 +84,35 @@ class Duration {
   static days(days: number) {
     return new Duration({ days });
   }
+  static months(months: number) {
+    console.warn(
+      "Be careful when you work with months. This library does not provide a really good way to handle these values since it's not the same every month, every year.",
+    );
+    return new Duration({ months });
+  }
+  static years(years: number) {
+    console.warn(
+      "Be careful when you work with years. This library does not provide a really good way to handle these values since it's not the same every month, every year.",
+    );
+    return new Duration({ years });
+  }
   //#endregion
 
   //#region Properties
+  /**
+   * The number of entire years spanned by this Duration.
+   */
+  get inYears() {
+    return Math.floor(this._duration / Duration.microsecondsPerYear);
+  }
+
+  /**
+   * The number of entire months spanned by this Duration.
+   */
+  get inMonths() {
+    return Math.floor(this._duration / Duration.microsecondsPerMonth);
+  }
+
   /**
    * The number of entire days spanned by this Duration.
    */

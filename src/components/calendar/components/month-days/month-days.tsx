@@ -21,12 +21,12 @@ const MonthDays: React.FC<MonthDaysProps> = ({ currentDate, events }) => (
         <span
           key={dateTime.millisecondsSinceEpoch}
           className={classnames(classes.cell, {
-            [classes.cell__out_of_range]: !dateTime.isInSameMonth(currentDate),
+            [classes.cell__out_of_range]: !dateTime.getIsInSameMonth(currentDate),
           })}
         >
           <span
             className={classnames(classes.day_number, {
-              [classes.day_number__current]: dateTime.isToday(),
+              [classes.day_number__current]: dateTime.getIsToday(),
             })}
           >
             {dateTime.day}

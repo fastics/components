@@ -130,7 +130,6 @@ describe('DateTime', () => {
     it('`add` should add a date', () => {
       // For example, I can set month my using constant `DateTime.august`
       const date = new DateTime({ year: 2021, month: DateTime.august, day: 6 });
-
       const duration = Duration.days(3);
 
       const finalDate = date.add(duration);
@@ -138,6 +137,17 @@ describe('DateTime', () => {
       expect(finalDate.year).toEqual(2021);
       expect(finalDate.month).toEqual(8);
       expect(finalDate.day).toEqual(9);
+    });
+
+    it('`add` should add 1 year', () => {
+      const date = new DateTime({ year: 2021, month: DateTime.august, day: 6 });
+      const duration = Duration.years(1);
+
+      const finalDate = date.add(duration);
+
+      expect(finalDate.year).toEqual(2022);
+      expect(finalDate.month).toEqual(8);
+      expect(finalDate.day).toEqual(6);
     });
 
     it('`subtract` should subtract a date', () => {

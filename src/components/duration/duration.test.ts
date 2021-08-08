@@ -34,6 +34,42 @@ describe('Duration', function () {
       expect(new Duration({ days: 2 }).inMicroseconds).toEqual(172800000000);
     });
 
+    it('should correctly work with months', () => {
+      expect(new Duration({ months: 0 }).inMicroseconds).toEqual(0);
+      expect(new Duration({ months: 1 }).inMicroseconds).toEqual(2629800000000);
+    });
+
+    it('should warn user when using months', () => {
+      jest.spyOn(console, 'warn').mockImplementationOnce(jest.fn);
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const _test = Duration.months(0);
+
+      expect(console.warn).toHaveBeenCalledWith(
+        "Be careful when you work with months. This library does not provide a really good way to handle these values since it's not the same every month, every year.",
+      );
+
+      jest.restoreAllMocks();
+    });
+
+    it('should correctly work with years', () => {
+      expect(new Duration({ years: 0 }).inMicroseconds).toEqual(0);
+      expect(new Duration({ years: 1 }).inMicroseconds).toEqual(31557600000000);
+    });
+
+    it('should warn user when using years', () => {
+      jest.spyOn(console, 'warn').mockImplementationOnce(jest.fn);
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const _test = Duration.years(0);
+
+      expect(console.warn).toHaveBeenCalledWith(
+        "Be careful when you work with years. This library does not provide a really good way to handle these values since it's not the same every month, every year.",
+      );
+
+      jest.restoreAllMocks();
+    });
+
     it('should correctly initialize with zero', () => {
       expect(Duration.zero.inMicroseconds).toEqual(0);
     });
@@ -54,7 +90,7 @@ describe('Duration', function () {
 
   describe('properties', () => {
     it('inMicroseconds should return correct value', () => {
-      expect(Duration.zero.inHours).toEqual(0);
+      expect(Duration.zero.inMicroseconds).toEqual(0);
       expect(new Duration({ milliseconds: 0 }).inMicroseconds).toEqual(0);
       expect(new Duration({ milliseconds: 120 }).inMicroseconds).toEqual(120000);
       expect(new Duration({ milliseconds: 2 }).inMicroseconds).toEqual(2000);
@@ -94,6 +130,24 @@ describe('Duration', function () {
       expect(new Duration({ milliseconds: 1300 }).inSeconds).toEqual(1);
       expect(new Duration({ minutes: 2 }).inSeconds).toEqual(120);
       expect(new Duration({ hours: 2 }).inSeconds).toEqual(7200);
+    });
+
+    it('inMonths should return correct value', () => {
+      expect(Duration.zero.inMonths).toEqual(0);
+      expect(new Duration({ seconds: 0 }).inMonths).toEqual(0);
+      expect(new Duration({ days: 23 }).inMonths).toEqual(0);
+      expect(new Duration({ days: 37 }).inMonths).toEqual(1);
+      expect(new Duration({ days: 138 }).inMonths).toEqual(4);
+      expect(new Duration({ years: 2 }).inMonths).toEqual(24);
+    });
+
+    it('inYears should return correct value', () => {
+      expect(Duration.zero.inYears).toEqual(0);
+      expect(new Duration({ seconds: 0 }).inYears).toEqual(0);
+      expect(new Duration({ months: 11 }).inYears).toEqual(0);
+      expect(new Duration({ days: 360 }).inYears).toEqual(0);
+      expect(new Duration({ days: 586 }).inYears).toEqual(1);
+      expect(new Duration({ months: 43 }).inYears).toEqual(3);
     });
 
     it('isNegative should return correct value', () => {
