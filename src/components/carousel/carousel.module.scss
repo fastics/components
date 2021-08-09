@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.inner {
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow: auto hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.element {
+  list-style-type: none;
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+}
+
+.button {
+  padding: 4px !important;
+  border: 1px solid rgb(235, 235, 235);
+  box-shadow: rgb(0 0 0 / 18%) 0 2.4px 7.2px, rgb(0 0 0 / 22%) 0 12.8px 28.8px;
+  background-color: white !important;
+  cursor: pointer;
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: center top;
+
+  &:hover {
+    background-color: white;
+  }
+
+  &:last-child {
+    left: auto;
+    right: -15px;
+  }
+}

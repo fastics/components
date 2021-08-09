@@ -1,28 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Button from './components/atoms/button';
+
+import { Link, Route, Switch } from 'react-router-dom';
+
+import logo from './logo.svg';
+
+const Home = () => (
+  <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        Edit <code>src/App.tsx</code> and save to reload.
+      </p>
+      <Link to="/toto">Learn React</Link>
+    </header>
+  </div>
+);
+
+const Toto = () => <h1>Toto</h1>;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <Button>Learn React</Button>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/toto" component={Toto} />
+    </Switch>
   );
 }
 

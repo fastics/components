@@ -1,0 +1,197 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import DataTable, { buildDataColumn } from './data-table';
+import classes from './data-table.stories.module.scss';
+
+export const data = [
+  {
+    name: 'Aaron Sananes',
+    lastActivity: '12/08/13',
+    clientType: 'Individual',
+    accountManager: 'John Smith',
+    totalBalance: '$1,233.00',
+    pictureUrl:
+      'https://res.cloudinary.com/demo/image/upload/c_scale,w_500/f_auto/q_auto/docs/plain_face.jpg',
+  },
+  {
+    name: 'Kyle Thomson',
+    lastActivity: '11/07/13',
+    clientType: 'Individual',
+    accountManager: 'Heather White',
+    totalBalance: '$3,123.00',
+    pictureUrl:
+      'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  },
+];
+
+export const DataColumn = buildDataColumn();
+
+<Meta title="DataTable" component={DataTable} />
+
+# DataTable
+
+<Canvas>
+  <DataTable data={data} classNames={{ header: classes.header, row: classes.row, cell: classes.cell }}>
+    <DataColumn
+      label="Client name"
+      value="name"
+      formatValue={(value, item) => (
+        <>
+          <img src={item.pictureUrl} alt="picture" />
+          <span>{value}</span>
+        </>
+      )}
+    />
+    <DataColumn label="Last activity" value="lastActivity" />
+    <DataColumn label="Client type" value="clientType" />
+    <DataColumn label="Account manager" value="accountManager" />
+    <DataColumn label="Total balance" value="totalBalance" className={classes.balance} />
+  </DataTable>
+</Canvas>
+
+<ArgsTable of={DataTable} />
+
+A `DataTable` allows you to easily organize your data into a table.
+
+You first need to get your data typed (for better results).
+
+```ts
+const data = [
+  {
+    name: 'Aaron Sananes',
+    lastActivity: '12/08/13',
+    clientType: 'Individual',
+    accountManager: 'John Smith',
+    totalBalance: '$1,233.00',
+    pictureUrl:
+      'https://res.cloudinary.com/demo/image/upload/c_scale,w_500/f_auto/q_auto/docs/plain_face.jpg',
+  },
+  {
+    name: 'Kyle Thomson',
+    lastActivity: '11/07/13',
+    clientType: 'Individual',
+    accountManager: 'Heather White',
+    totalBalance: '$3,123.00',
+    pictureUrl:
+      'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  },
+] as const;
+
+type Data = typeof data;
+```
+
+Secondly, you need to generate `DataColumn` based on that typing :
+
+```tsx
+import { buildDataColumn } from './data-table';
+
+const data = [
+  {
+    name: 'Aaron Sananes',
+    lastActivity: '12/08/13',
+    clientType: 'Individual',
+    accountManager: 'John Smith',
+    totalBalance: '$1,233.00',
+    pictureUrl:
+      'https://res.cloudinary.com/demo/image/upload/c_scale,w_500/f_auto/q_auto/docs/plain_face.jpg',
+  },
+  {
+    name: 'Kyle Thomson',
+    lastActivity: '11/07/13',
+    clientType: 'Individual',
+    accountManager: 'Heather White',
+    totalBalance: '$3,123.00',
+    pictureUrl:
+      'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  },
+] as const;
+
+type Data = typeof data;
+
+const DataColumn = buildDataColumn<Data>(); // <== Here
+```
+
+Now you get a strongly typed data table ! (click `Show code` below to see actual code)
+
+<Canvas>
+  <Story name="Default">
+    <DataTable data={data}>
+      <DataColumn label="Client name" value="name" />
+      <DataColumn label="Last activity" value="lastActivity" />
+      <DataColumn label="Client type" value="clientType" />
+      <DataColumn label="Account manager" value="accountManager" />
+      <DataColumn label="Total balance" value="totalBalance" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With value formatted
+
+<Canvas>
+  <Story name="With value formatted">
+    <DataTable data={data}>
+      <DataColumn
+        label="Client name"
+        value="name"
+        formatValue={(value, item) => (
+          <>
+            <img alt="picture" src={item.pictureUrl} width={32} height={32} />
+            <span>{value}</span>
+          </>
+        )}
+      />
+      <DataColumn label="Last activity" value="lastActivity" />
+      <DataColumn label="Client type" value="clientType" />
+      <DataColumn label="Account manager" value="accountManager" />
+      <DataColumn label="Total balance" value="totalBalance" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With custom cell component
+<Canvas>
+  <Story name="With custom cell">
+    <DataTable data={data}>
+      <DataColumn label="Client name" value="name" />
+      <DataColumn label="Last activity" value="lastActivity" renderCell={({ value }) => <div style={{flex: 1, backgroundColor: 'red', color: 'white'}}>{value}</div>} />
+      <DataColumn label="Client type" value="clientType" />
+      <DataColumn label="Account manager" value="accountManager" />
+      <DataColumn label="Total balance" value="totalBalance" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With custom row component
+<Canvas>
+  <Story name="With custom row">
+    <DataTable data={data} renderRow={({ children }) => <div style={{borderBottom: '1px solid red', display: 'flex'}}>{children}</div>}>
+      <DataColumn label="Client name" value="name" />
+      <DataColumn label="Last activity" value="lastActivity" />
+      <DataColumn label="Client type" value="clientType" />
+      <DataColumn label="Account manager" value="accountManager" />
+      <DataColumn label="Total balance" value="totalBalance" />
+    </DataTable>
+  </Story>
+</Canvas>
+
+With custom classNames
+<Canvas>
+  <Story name="With custom classnames">
+    <DataTable data={data} classNames={{ header: classes.header, row: classes.row, cell: classes.cell }}>
+      <DataColumn
+        label="Client name"
+        value="name"
+        formatValue={(value, item) => (
+          <>
+            <img alt="picture" src={item.pictureUrl} />
+            <span>{value}</span>
+          </>
+        )}
+      />
+      <DataColumn label="Last activity" value="lastActivity" />
+      <DataColumn label="Client type" value="clientType" />
+      <DataColumn label="Account manager" value="accountManager" />
+      <DataColumn label="Total balance" value="totalBalance" className={classes.balance} />
+    </DataTable>
+  </Story>
+</Canvas>

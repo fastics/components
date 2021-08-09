@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.header, .row, .cell {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: #676767;
+}
+
+.row {
+  padding-block: 12px;
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+}
+
+.cell {
+  color: #737373;
+}
+
+.balance {
+  color: #ff9d42;
+  font-weight: bold;
+}
