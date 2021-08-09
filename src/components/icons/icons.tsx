@@ -677,6 +677,10 @@ class Icons {
   static 'app_settings_alt_sharp' = IconDataConstructor('app_settings_alt', 'sharp');
   static 'app_settings_alt_rounded' = IconDataConstructor('app_settings_alt', 'rounded');
   static 'app_settings_alt_outlined' = IconDataConstructor('app_settings_alt', 'outlined');
+  static 'apple' = IconDataConstructor('apple');
+  static 'apple_sharp' = IconDataConstructor('apple', 'sharp');
+  static 'apple_rounded' = IconDataConstructor('apple', 'rounded');
+  static 'apple_outlined' = IconDataConstructor('apple', 'outlined');
   static 'approval' = IconDataConstructor('approval');
   static 'approval_sharp' = IconDataConstructor('approval', 'sharp');
   static 'approval_rounded' = IconDataConstructor('approval', 'rounded');
