@@ -15,7 +15,7 @@ const mapIcon = (variant?: 'rounded' | 'outlined' | 'sharp' | 'screen') => {
   return 'material-icons';
 };
 
-interface IconProps {
+export interface IconProps {
   disabled?: boolean;
   className?: string;
   /**
@@ -32,7 +32,7 @@ interface IconProps {
   icon: IconData;
 }
 
-interface IconInnerProps {
+export interface IconInnerProps {
   className?: string;
   icon: IconData;
   semanticLabel?: string;
