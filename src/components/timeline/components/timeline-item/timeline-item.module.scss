@@ -1,0 +1,95 @@
+$head-size: 10px;
+
+:global(.timeline__right) .item {
+  &:before, &:after {
+    left: calc(100% - 4px - 2px)
+  }
+
+  &:after {
+    margin-left: -4px;
+  }
+
+  .content {
+    width: calc(100% - 18px);
+    text-align: right;
+    margin: 0;
+  }
+}
+
+:global(.timeline__alternate) .item {
+  &:before, &:after {
+    left: 50%;
+  }
+
+  &:after {
+    margin-left: -4px;
+  }
+
+  &:nth-child(odd) {
+    .content {
+      left: calc(50% - 4px);
+      width: calc(50% - 14px);
+      text-align: left;
+    }
+  }
+
+  &:nth-child(even) {
+    .content {
+      width: calc(50% - 12px);
+      margin: 0;
+      text-align: right;
+    }
+  }
+}
+
+.item {
+  --dot-color: red;
+
+  position: relative;
+  margin: 0;
+  list-style: none;
+
+  &:not(:last-of-type) {
+    padding-bottom: 20px;
+  }
+
+  &:last-of-type:before {
+    display: none;
+  }
+
+  // Tail
+  &:before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: $head-size;
+    height: calc(100% - #{$head-size});
+    border-left: 2px solid #f0f0f0;
+  }
+
+  // Dot
+  &:after {
+    content: "";
+    position: absolute;
+    width: $head-size;
+    height: $head-size;
+    background-color: #fff;
+    border: 2px solid var(--dot-color);
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: 0;
+  }
+}
+
+.content {
+  position: relative;
+  margin: 0 0 0 #{$head-size + 16px};
+  word-break: break-word;
+  // top: -#{$head-size * 70 / 100};
+  top: -7px;
+
+  > * {
+    padding: 0;
+    margin: 0;
+  }
+}
