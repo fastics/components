@@ -1,5 +1,5 @@
 {
-  "name": "invoicing-react",
+  "name": "@fastics/components",
   "version": "0.1.1",
   "private": true,
   "scripts": {
@@ -37,6 +37,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@dbenfouzari/cli": "^5.1.1",
+    "@semantic-release/npm": "^7.1.3",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
@@ -84,5 +85,9 @@
       "!src/**/*.stories.tsx",
       "!src/stories/*.*"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
   }
 }
