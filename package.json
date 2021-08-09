@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@dbenfouzari/cli": "^5.1.1",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
@@ -46,7 +47,6 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-window": "^1.8.4",
     "@types/styled-components": "^5.1.11",
-    "commitlint-config-gitmoji": "^2.2.5",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.0",
