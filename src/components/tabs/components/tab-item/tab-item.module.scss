@@ -1,0 +1,28 @@
+.item {
+  user-select: none;
+  padding-bottom: 12px;
+  display: flex;
+  place-items: center;
+  color: var(--inactive-color) !important;
+
+  &, > * {
+    transition: all .3s ease;
+  }
+
+  & + & {
+    margin-left: var(--tabs-space);
+  }
+
+  &__active {
+    color: var(--active-color) !important;
+
+    .icon {
+      color: var(--active-color) !important;
+    }
+  }
+}
+
+.icon {
+  color: var(--inactive-color) !important;
+  margin-right: 12px;
+}
