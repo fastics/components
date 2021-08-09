@@ -14,6 +14,11 @@ $head-size: 10px;
     text-align: right;
     margin: 0;
   }
+
+  .dot {
+    left: calc(100% - 4px - 2px);
+    margin-left: 1px;
+  }
 }
 
 :global(.timeline__alternate) .item {
@@ -39,6 +44,11 @@ $head-size: 10px;
       margin: 0;
       text-align: right;
     }
+  }
+
+  .dot {
+    margin-left: 1px;
+    left: 50%
   }
 }
 
@@ -81,6 +91,12 @@ $head-size: 10px;
   }
 }
 
+.with_custom_dot {
+  &:after {
+    display: none;
+  }
+}
+
 .content {
   position: relative;
   margin: 0 0 0 #{$head-size + 16px};
@@ -92,4 +108,19 @@ $head-size: 10px;
     padding: 0;
     margin: 0;
   }
+}
+
+.dot {
+  position: absolute;
+  top: 5.5px;
+  left: 5px;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  padding: 3px 1px;
+  line-height: 1;
+  text-align: center;
+  border: 0;
+  border-radius: 0;
+  transform: translate(-50%,-50%);
 }
