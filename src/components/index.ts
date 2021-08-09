@@ -28,6 +28,7 @@ export { default as Modal } from './modal';
 export { default as Padding } from './padding';
 export { default as Skeleton } from './skeleton';
 export { default as Stepper } from './stepper';
+export { default as Tabs } from './tabs';
 export { default as TextButton } from './text-button';
 export { default as TextField } from './text-field';
 export { default as Timeline } from './timeline';
