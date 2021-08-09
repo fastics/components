@@ -114,7 +114,7 @@ describe('DateTime', () => {
     });
 
     it('`millisecondsSinceEpoch` should return correct value', () => {
-      expect(date.millisecondsSinceEpoch).toEqual(1628240484912);
+      expect(date.millisecondsSinceEpoch).toEqual(1628247684912);
     });
 
     it('`timeZoneName` should return correct value', () => {
@@ -122,7 +122,7 @@ describe('DateTime', () => {
     });
 
     it('`timeZoneOffset` should return correct value', () => {
-      expect(date.timeZoneOffset).toEqual(Duration.hours(2));
+      expect(date.timeZoneOffset).toEqual(Duration.hours(0));
     });
   });
 
