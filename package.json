@@ -9,7 +9,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -31,6 +33,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
     "@dbenfouzari/cli": "^5.1.1",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
@@ -42,9 +45,10 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-window": "^1.8.4",
     "@types/styled-components": "^5.1.11",
+    "commitlint-config-gitmoji": "^2.2.5",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "husky": "^7.0.1",
+    "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2",
     "react-window": "^1.8.6",
@@ -64,11 +68,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}": [
