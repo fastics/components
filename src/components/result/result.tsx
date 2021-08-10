@@ -14,6 +14,38 @@ export enum ResultStatus {
   ERROR = '@result-status_error',
 }
 
+export interface ResultClassnames {
+  /**
+   * The **Result** wrapper. Contains all React nodes.
+   */
+  wrapper?: string;
+
+  /**
+   * **icon** wrapper. By default, it only applies a bottom margin.
+   */
+  icon?: string;
+
+  /**
+   * The **title** className.
+   */
+  title?: string;
+
+  /**
+   * The **subtitle** className.
+   */
+  subtitle?: string;
+
+  /**
+   * The **actions** wrapper. By default, it only applies a bottom margin, and a gap between elements.
+   */
+  actions?: string;
+
+  /**
+   * The **content** className.
+   */
+  content?: string;
+}
+
 interface BaseResultProps {
   /**
    * The **title** you want to show.
@@ -27,40 +59,34 @@ interface BaseResultProps {
    * @deprecated NYI.
    */
   children?: ReactNode;
+  /**
+   * Use this to implement your own actions.
+   * Generally buttons, but can be links too.
+   */
   actions?: ReactNode | ReactNode[];
+
+  /**
+   * Override classNames.
+   * Use this to customize the **Result** component.
+   */
+  classNames?: ResultClassnames;
 }
 
 interface ResultWithCustomIconProps extends BaseResultProps {
-  /**
-   * Mandatory if **icon** is not set.
-   *
-   * You cannot set a **status** along with an **icon**.
-   */
   status?: undefined;
-  /**
-   * Mandatory if **status** is not set.
-   *
-   * You cannot set an **icon** along with a **status**.
-   *
-   * Icons generated when you set a **status** are 72px sized. We recommend you to use this size.
-   */
   icon: ReactElement<IconProps>;
-
-  /**
-   * Override default Icon size.
-   */
   iconSize?: undefined;
 }
 
 interface ResultWithoutCustomIconProps extends BaseResultProps {
   /**
-   * Mandatory if **icon** is not set.
+   * REQUIRED if **icon** is not set.
    *
    * You cannot set a **status** along with an **icon**.
    */
   status: ResultStatus;
   /**
-   * Mandatory if **status** is not set.
+   * REQUIRED if **status** is not set.
    *
    * You cannot set an **icon** along with a **status**.
    */
@@ -116,15 +142,22 @@ export const Result: FC<ResultProps> = ({
   children,
   iconSize,
   actions,
+  classNames,
 }) => (
-  <div className={classes.wrapper}>
-    <div className={classes.icon}>{getIcon(status, icon, iconSize)}</div>
-    <div className={classes.title}>{title}</div>
-    {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
+  <div className={classnames(classes.wrapper, classNames?.wrapper)}>
+    <div className={classnames(classes.icon, classNames?.icon)}>
+      {getIcon(status, icon, iconSize)}
+    </div>
 
-    {actions && <div className={classes.actions}>{actions}</div>}
+    <div className={classnames(classes.title, classNames?.title)}>{title}</div>
 
-    {children && <div className={classes.content}>{children}</div>}
+    {subtitle && (
+      <div className={classnames(classes.subtitle, classNames?.subtitle)}>{subtitle}</div>
+    )}
+
+    {actions && <div className={classnames(classes.actions, classNames?.actions)}>{actions}</div>}
+
+    {children && <div className={classnames(classes.content, classNames?.content)}>{children}</div>}
   </div>
 );
 

@@ -14,6 +14,8 @@ export default {
   argTypes: {
     icon: { control: { disable: true } },
     children: { control: { disable: true } },
+    actions: { control: { disable: true } },
+    classNames: { control: { disable: true } },
     iconSize: { control: { type: 'number' } },
     status: {
       control: {
