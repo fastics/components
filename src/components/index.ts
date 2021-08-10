@@ -26,6 +26,7 @@ export { default as Loader } from './loader';
 export { default as Margin } from './margin';
 export { default as Modal } from './modal';
 export { default as Padding } from './padding';
+export { default as Result } from './result';
 export { default as Skeleton } from './skeleton';
 export { default as Stepper } from './stepper';
 export { default as Tabs } from './tabs';
