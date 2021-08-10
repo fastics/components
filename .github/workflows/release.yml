@@ -1,42 +1,16 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Quality"]
+    branches: [main]
+    types:
+      - completed
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Check lint
-        run: yarn lint
-
-      - name: Test
-        run: yarn test --watchAll=false
-
   release:
     name: Release
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     needs:
       - test
     runs-on: ubuntu-latest
