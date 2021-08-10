@@ -38,6 +38,12 @@
   line-height: 1.6;
 }
 
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
 .content {
   margin-top: 24px;
   padding: 24px 40px;

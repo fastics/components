@@ -27,6 +27,7 @@ interface BaseResultProps {
    * @deprecated NYI.
    */
   children?: ReactNode;
+  actions?: ReactNode | ReactNode[];
 }
 
 interface ResultWithCustomIconProps extends BaseResultProps {
@@ -107,11 +108,21 @@ const getIcon = (status?: ResultStatus, icon?: ReactElement<IconProps>, iconSize
   }
 };
 
-export const Result: FC<ResultProps> = ({ status, title, subtitle, icon, children, iconSize }) => (
+export const Result: FC<ResultProps> = ({
+  status,
+  title,
+  subtitle,
+  icon,
+  children,
+  iconSize,
+  actions,
+}) => (
   <div className={classes.wrapper}>
     <div className={classes.icon}>{getIcon(status, icon, iconSize)}</div>
     <div className={classes.title}>{title}</div>
     {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
+
+    {actions && <div className={classes.actions}>{actions}</div>}
 
     {children && <div className={classes.content}>{children}</div>}
   </div>

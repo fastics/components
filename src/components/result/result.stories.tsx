@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import classnames from 'classnames';
 import React from 'react';
 
 import Colors from '../colors';
@@ -40,6 +41,22 @@ Success.args = {
   subtitle: 'Order number #12345. Shipped at 2021-08-15.',
   status: ResultStatus.SUCCESS,
   iconSize: 72,
+};
+
+export const WithActions = Template.bind({});
+WithActions.args = {
+  title: 'Successfully Purchased !',
+  subtitle: 'Order number #12345. Shipped at 2021-08-15.',
+  status: ResultStatus.SUCCESS,
+  iconSize: 72,
+  actions: [
+    <button key="shop" className={classnames(classes.button, classes.button__primary)}>
+      Go to Shop
+    </button>,
+    <button key="buy" className={classes.button}>
+      Buy Again
+    </button>,
+  ],
 };
 
 export const Info = Template.bind({});
