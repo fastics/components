@@ -8,11 +8,15 @@ on:
       - completed
 
 jobs:
+  dummy:
+    name: Dummy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running Release"
+
   release:
     name: Release
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    needs:
-      - test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
