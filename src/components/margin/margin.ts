@@ -62,6 +62,10 @@ class Margin extends EdgeInsets {
       left ?? this.left,
     );
   }
+
+  public toString() {
+    return `Margin(top: ${this.top}, right: ${this.right}, bottom: ${this.bottom}, left: ${this.left})`;
+  }
 }
 
 export default Margin;

@@ -6,10 +6,13 @@
  * So we write our components, then we export them to the outer world.
  */
 
+export { default as Align } from './align';
+export { default as Alignment } from './alignment';
 export { default as Calendar } from './calendar';
 export { default as Carousel } from './carousel';
 export { default as Color } from './color';
 export { default as Colors } from './colors';
+export { default as Container } from './container';
 export { default as DataTable } from './data-table';
 export { default as DateTime } from './date-time';
 export { default as DropdownButton } from './dropdown-button';
