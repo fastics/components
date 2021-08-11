@@ -1,6 +1,6 @@
 // TODO: Replace styled-components by react-jss
 
-import { FC } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import Icon from '../icon';

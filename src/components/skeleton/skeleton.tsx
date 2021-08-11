@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { FC, ReactChild, ReactChildren } from 'react';
+import React, { FC, ReactChild, ReactChildren } from 'react';
 
 import Color from '../color';
 import SkeletonAvatar from './components/avatar';

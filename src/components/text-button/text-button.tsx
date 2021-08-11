@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, MouseEvent, MouseEventHandler, ReactChild, useCallback } from 'react';
+import React, { FC, MouseEvent, MouseEventHandler, ReactChild, useCallback } from 'react';
 
 import { Maybe } from '../../types';
 import styles from './text-button.module.scss';
