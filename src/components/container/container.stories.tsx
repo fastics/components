@@ -26,6 +26,14 @@ Default.args = {
   children: <span>Hello, World !</span>,
 };
 
+export const AsButton = Template.bind({});
+AsButton.args = {
+  color: Colors.blueGrey[200],
+  padding: Padding.symmetric({ horizontal: 24, vertical: 12 }),
+  children: <span>Hello, World !</span>,
+  as: 'button',
+};
+
 export const WithFixedSize = Template.bind({});
 WithFixedSize.args = {
   height: 200,

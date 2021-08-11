@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { createElement, ReactHTML, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Align from '../align';
@@ -33,6 +33,7 @@ interface ContainerProps {
    */
   alignment?: Alignment;
   children?: ReactNode;
+  as?: keyof ReactHTML;
 }
 
 interface ContainerStylesProps {
@@ -84,14 +85,24 @@ const useStyles = createUseStyles({
  * @see Color
  * @see Alignment
  */
-export const Container: React.FC<ContainerProps> = ({ children, alignment, ...rest }) => {
+export const Container: React.FC<ContainerProps> = ({
+  children,
+  as = 'div',
+  alignment,
+  ...rest
+}) => {
   const styles = useStyles(rest);
 
-  return (
-    <div className={styles.container}>
-      {children ? alignment ? <Align alignment={alignment}>{children}</Align> : children : null}
-    </div>
-  );
+  return createElement(as, {
+    className: styles.container,
+    children: children ? (
+      alignment ? (
+        <Align alignment={alignment}>{children}</Align>
+      ) : (
+        children
+      )
+    ) : null,
+  });
 };
 
 export default Container;
