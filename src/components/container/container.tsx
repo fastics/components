@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { createElement, ReactHTML, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 
@@ -23,17 +24,26 @@ interface ContainerProps {
   /**
    * Sets container width.
    */
-  width?: number;
+  width?: string | number;
   /**
    * Sets container height.
    */
-  height?: number;
+  height?: string | number;
   /**
    * Sets container alignment.
    */
   alignment?: Alignment;
   children?: ReactNode;
+  /**
+   * Override rendered component.
+   *
+   * @default div
+   */
   as?: keyof ReactHTML;
+  /**
+   * Add custom className
+   */
+  className?: string;
 }
 
 interface ContainerStylesProps {
@@ -89,12 +99,13 @@ export const Container: React.FC<ContainerProps> = ({
   children,
   as = 'div',
   alignment,
+  className,
   ...rest
 }) => {
   const styles = useStyles(rest);
 
   return createElement(as, {
-    className: styles.container,
+    className: classnames(styles.container, className),
     children: children ? (
       alignment ? (
         <Align alignment={alignment}>{children}</Align>
