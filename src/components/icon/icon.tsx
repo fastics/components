@@ -57,11 +57,13 @@ export const IconInner: FC<IconInnerProps> = ({ className, icon, semanticLabel }
  * @example
  * <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
  */
-export const Icon = styled(IconInner)<IconProps>`
+const StyledIcon = styled(IconInner)<IconProps>`
   ${styles.baseStyles}
   color: ${(p) => p.color?.toRGBA() || Colors.black.toRGBA()};
   ${(p) => p.disabled && styles.disabledStyles}
   font-size: ${(p) => p.size || 24}px;
 `;
+
+export const Icon: FC<IconProps> = (props) => <StyledIcon {...props} />;
 
 export default Icon;

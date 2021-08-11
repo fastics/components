@@ -26,8 +26,10 @@ export const TextFieldBase: FC<TextFieldProps> = ({ className, obscureText, ...p
   return <Input type={obscureText ? 'password' : 'text'} className={className} {...props} />;
 };
 
-export const TextField = styled(TextFieldBase)`
+const StyledTextField = styled(TextFieldBase)`
   ${styles.baseStyles}
 `;
+
+export const TextField: FC<TextFieldProps> = (props) => <StyledTextField {...props} />;
 
 export default TextField;

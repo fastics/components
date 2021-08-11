@@ -33,7 +33,7 @@ export const IconButtonBase: FC<IconButtonProps> = ({
   </button>
 );
 
-export const IconButton = styled(IconButtonBase)<IconButtonProps>`
+const StyledIconButton = styled(IconButtonBase)<IconButtonProps>`
   ${(p) => p.padding?.toStyledCSS() || Padding.all(8).toStyledCSS()};
   display: inline-grid;
   place-items: center;
@@ -54,5 +54,7 @@ export const IconButton = styled(IconButtonBase)<IconButtonProps>`
     box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.2);
   }
 `;
+
+const IconButton: FC<IconButtonProps> = (props) => <StyledIconButton {...props} />;
 
 export default IconButton;
