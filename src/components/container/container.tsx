@@ -1,4 +1,4 @@
-import React, { ReactChildren } from 'react';
+import React, { ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Align from '../align';
@@ -32,7 +32,7 @@ interface ContainerProps {
    * Sets container alignment.
    */
   alignment?: Alignment;
-  children?: ReactChildren;
+  children?: ReactNode;
 }
 
 interface ContainerStylesProps {
