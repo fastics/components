@@ -21,13 +21,13 @@ export default {
   },
 } as ComponentMeta<typeof Icon>;
 
-const Template: ComponentStory<typeof Icon> = ({ icon, ...args }) => {
+const Template: ComponentStory<any> = ({ icon, ...args }: { icon: string }) => {
   const originalIcon = Icons[icon as keyof Icons];
 
   return <Icon icon={originalIcon} {...args} />;
 };
 
-const WithCustomColorTemplate: ComponentStory<typeof Icon> = ({ icon, ...args }) => {
+const WithCustomColorTemplate: ComponentStory<any> = ({ icon, ...args }: { icon: string }) => {
   const originalIcon = Icons[icon as keyof Icons];
 
   return <Icon color={Colors.red[500]} icon={originalIcon} {...args} />;
