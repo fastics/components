@@ -1,6 +1,6 @@
 // TODO: Replace styled-components by react-jss
 
-import { FC, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import styled from 'styled-components';
 
 import Color from '../color';

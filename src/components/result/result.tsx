@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { FC, ReactElement, ReactNode } from 'react';
+import React, { FC, ReactElement, ReactNode } from 'react';
 
 import Colors from '../colors';
 import Icon, { IconProps } from '../icon';

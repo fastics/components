@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../../../color';

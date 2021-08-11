@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../color';

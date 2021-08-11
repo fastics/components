@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { FC, ReactElement } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 import TimelineItem from './components/timeline-item';
 import classes from './timeline.module.scss';

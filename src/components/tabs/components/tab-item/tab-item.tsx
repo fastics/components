@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { FC, forwardRef, ReactNode, RefObject } from 'react';
+import React, { FC, forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Color from '../../../color';
@@ -51,7 +51,7 @@ const useStyles = createUseStyles({
 });
 
 export const InnerTabItem = forwardRef<HTMLDivElement, InnerTabItemProps>(
-  ({ children, name, onChange, active, icon, inactiveColor }, ref) => {
+  ({ name, onChange, active, icon, inactiveColor }, ref) => {
     const styles = useStyles({ inactiveColor });
     return (
       <div

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 import classes from '../data-table.module.scss';
 import { DataTableClassNames, DataTableColumnProps, DataTableData, DataTableProps } from '../types';
