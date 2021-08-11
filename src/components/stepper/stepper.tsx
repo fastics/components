@@ -1,4 +1,4 @@
-import { Children, FC, ReactElement } from 'react';
+import React, { Children, FC, ReactElement } from 'react';
 
 import Color from '../color';
 import Colors from '../colors';

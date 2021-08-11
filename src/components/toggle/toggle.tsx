@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { FC, ReactNode, useCallback } from 'react';
+import React, { FC, ReactNode, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import useMergedState from '../../hooks/useMergedState';
