@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactChild } from 'react';
+import React, { CSSProperties, ReactChildren } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import Alignment from '../alignment';
@@ -13,9 +13,9 @@ interface AlignProps {
   alignment: Alignment;
 
   /**
-   * Logically a single React child.
+   * The children you want to align.
    */
-  children: ReactChild;
+  children: ReactChildren;
 }
 
 interface AlignStylesProps {
