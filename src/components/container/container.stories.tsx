@@ -15,6 +15,8 @@ export default {
     margin: { control: { disable: true } },
     padding: { control: { disable: true } },
     children: { control: { disable: true } },
+    width: { control: { type: 'text' } },
+    height: { control: { type: 'text' } },
   },
 } as ComponentMeta<typeof Container>;
 
