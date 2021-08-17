@@ -39,7 +39,9 @@ jobs:
         run: yarn install
 
       - name: Release Storybook
-        run: yarn storybook:deploy
+        run: yarn storybook:deploy --ci
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.FASTICS_STORYBOOK_TOKEN }}
 
   release:
     name: Release
