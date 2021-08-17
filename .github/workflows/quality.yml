@@ -83,3 +83,7 @@ jobs:
 
       - name: Test
         run: yarn test --watchAll=false
+
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
