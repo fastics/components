@@ -18,16 +18,18 @@ interface TopProps {
 const CalendarTop: React.FC<TopProps> = ({ currentDate, locale, onNextClick, onPrevClick }) => (
   <div className={classes.top}>
     <IconButton
+      data-testid="prev-month"
       onPress={onPrevClick}
       icon={<Icon icon={Icons.arrow_left} color={new Color(0xff99a1a7)} />}
     />
 
     <div className={classes.center}>
-      <span>{MONTHS[locale][currentDate.month - 1]}</span>
+      <span data-testid="month">{MONTHS[locale][currentDate.month - 1]}</span>
       <span>{currentDate.year}</span>
     </div>
 
     <IconButton
+      data-testid="next-month"
       onPress={onNextClick}
       icon={<Icon icon={Icons.arrow_right} color={new Color(0xff99a1a7)} />}
     />

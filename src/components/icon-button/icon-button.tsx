@@ -27,8 +27,9 @@ export const IconButtonBase: FC<IconButtonProps> = ({
   icon: IconComponent,
   onPress,
   className,
+  ...props
 }) => (
-  <button className={className} onClick={onPress}>
+  <button className={className} onClick={onPress} {...props}>
     {IconComponent}
   </button>
 );
