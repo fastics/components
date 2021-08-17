@@ -81,7 +81,11 @@ const useStyles = createUseStyles({
 export const Align: React.FC<AlignProps> = ({ alignment, children }) => {
   const styles = useStyles({ alignment });
 
-  return <div className={styles.wrapper}>{children}</div>;
+  return (
+    <div data-testid="align" className={styles.wrapper}>
+      {children}
+    </div>
+  );
 };
 
 export default Align;
