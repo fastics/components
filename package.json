@@ -11,8 +11,9 @@
     "build": "npx rimraf dist && yarn build:js && yarn build:ts",
     "test": "TZ=UTC react-scripts test",
     "lint": "eslint .",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook:dev": "start-storybook -p 6006 -s public",
+    "storybook:build": "build-storybook -s public",
+    "storybook:deploy": "storybook-to-ghpages",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
     "release": "semantic-release"
@@ -20,7 +21,9 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=15",
@@ -46,6 +49,7 @@
     "@storybook/node-logger": "^6.3.6",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.6",
+    "@storybook/storybook-deployer": "^2.8.10",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^7.0.1",
