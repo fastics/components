@@ -37,3 +37,6 @@ const App = () => (
 ## Documentation
 You can see all documentation on https://fastics.github.io/components/.
 It's a component library that exposes all available components.
+
+## Contributors
+Made with ❤️ by [Donovan BENFOUZARI](https://dbenfouzari.tech)
