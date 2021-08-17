@@ -1,5 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import Colors from './colors'; import Icon from './icon'; import Icons from './icons';
+import Colors from './colors';
+import Icon from './icon';
+import Icons from './icons';
 
 <Meta title="Introduction" />
 
@@ -7,95 +9,167 @@ import Colors from './colors'; import Icon from './icon'; import Icons from './i
 
 I try to expose some components that will easy your life, but with a minimal style.
 
-Because I know you will be better than me at designing your components, I expose as much styling as I can.
-So you will get some components that you will love, with YOUR design, but simple to use.
+Because I know you will be better than me at designing your components, I expose as much styling as
+I can. So you will get some components that you will love, with YOUR design, but simple to use.
 
 ## Utilities
 
 I included some utilities to get your life easier.
 
 Here is an exhaustive list of them:
+
 - [Color](/docs/color--page) to create and manipulate colors.
 - [Colors](/docs/colors--amber) to get Material Colors easily e.g.,.: `Colors.red[500]`
-<div style={{ width: 100, height: 30, display: 'inline-block', backgroundColor: Colors.red[500].toRGBA() }} />
+  <div
+    style={{
+      width: 100,
+      height: 30,
+      display: 'inline-block',
+      backgroundColor: Colors.red[500].toRGBA(),
+    }}
+  />
 - [Icons](/docs/icons--default) to easily select Material Icon e.g.,.: `Icons.face`
-<Icon icon={Icons.face} />
+  <Icon icon={Icons.face} />
 
 ## Components Library
 
-Here are the actual components, ordered by alphabetical name. It's an actual showcase of what you can use.
+Here are the actual components, ordered by alphabetical name. It's an actual showcase of what you
+can use.
 
 For more information, please directly get into the component documentation.
 
-### [Carousel](/docs/carousel--default)
+### [Align](/docs/align--top-left)
+
 <Canvas>
-  <Story id='carousel--default' />
+  <Story id="align--top-left" />
+</Canvas>
+
+### [Calendar](/docs/calendar--default)
+
+<Canvas>
+  <Story id="calendar--with-events" />
+</Canvas>
+
+### [Carousel](/docs/carousel--default)
+
+<Canvas>
+  <Story id="carousel--default" />
+</Canvas>
+
+### [Container](/docs/container--default)
+
+<Canvas>
+  <Story id="container--with-alignment" />
 </Canvas>
 
 ### [DataTable](/docs/datatable--default-story)
+
 <Canvas>
-  <Story id='datatable--default-story' />
+  <Story id="datatable--with-custom-classnames" />
 </Canvas>
 
 ### [DropdownButton](/docs/dropdownbutton--default)
+
 <Canvas>
-  <Story id='dropdownbutton--default' />
+  <Story id="dropdownbutton--with-custom-class-names" />
 </Canvas>
 
 ### [ExpansionPanel](/docs/expansionpanel--default)
+
 <Canvas>
-  <Story id='expansionpanel--default' />
+  <Story id="expansionpanel--multiple" />
 </Canvas>
 
 ### [GridView.Count](/docs/gridview-count--default)
+
 <Canvas>
-  <Story id='gridview-count--default' />
+  <Story id="gridview-count--with-multiple-elements" />
 </Canvas>
 
 ### [IconButton](/docs/iconbutton--default)
+
 <Canvas>
-  <Story id='iconbutton--default' />
+  <Story id="iconbutton--default" />
 </Canvas>
 
 ### [Icon](/docs/icon--default)
+
 <Canvas>
-  <Story id='icon--default' />
+  <Story id="icon--default" />
 </Canvas>
 
 ### [Input](/docs/input--default)
+
 <Canvas>
-  <Story id='input--default' />
+  <Story id="input--default" />
 </Canvas>
 
 ### [LinearProgressIndicator](/docs/linearprogressindicator--default)
+
 <Canvas>
-  <Story id='linearprogressindicator--default' />
+  <Story id="linearprogressindicator--default" />
 </Canvas>
 
 ### [Loader](/docs/loader--default)
+
 <Canvas>
-  <Story id='loader--default' />
+  <Story id="loader--default" />
 </Canvas>
 
 ### [Loader.Screen](/docs/loader-screen--default)
+
 <Canvas>
-  <Story id='loader-screen--default' />
+  <Story id="loader-screen--default" />
 </Canvas>
 
 ### [Modal](/docs/modal--default)
+
 For obvious reasons, I cannot include modal here. You can click on the title to see it in action.
 
-### [Stepper](/docs/stepper--default)
+### [Result](/docs/result--success)
+
 <Canvas>
-  <Story id='stepper--default' />
+  <Story id="result--success" />
+</Canvas>
+
+### [Result](/docs/skeleton--success)
+
+<Canvas>
+  <Story id="skeleton--with-custom-props" />
+</Canvas>
+
+### [Stepper](/docs/stepper--default)
+
+<Canvas>
+  <Story id="stepper--default" />
+</Canvas>
+
+### [Tabs](/docs/tabs--default)
+
+<Canvas>
+  <Story id="tabs--default" />
 </Canvas>
 
 ### [TextButton](/docs/textbutton--default)
+
 <Canvas>
-  <Story id='textbutton--default' />
+  <Story id="textbutton--default" />
 </Canvas>
 
 ### [TextField](/docs/textfield--default)
+
 <Canvas>
-  <Story id='textfield--default' />
+  <Story id="textfield--default" />
+</Canvas>
+
+### [Timeline](/docs/timeline--default)
+
+<Canvas>
+  <Story id="timeline--default" />
+</Canvas>
+
+### [Toggle](/docs/toggle--default)
+
+<Canvas>
+  <Story id="toggle--with-checked-label-icon" />
 </Canvas>
