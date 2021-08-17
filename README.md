@@ -5,7 +5,7 @@ This project aims to help by creating beautiful React components, without headac
 In fact, you only need to design your own custom styles and here we go ! You get working components
 that work for you.
 
-[![CI status][github-action-image]][github-action-url] [![david deps][david-image]][david-url] [![david devDeps][david-dev-image]][david-dev-url] [![Total alerts][lgtm-image]][lgtm-url] [![][bundlesize-js-image]][unpkg-js-url]
+[![CI status][github-action-image]][github-action-url] [![david deps][david-image]][david-url] [![david devDeps][david-dev-image]][david-dev-url] [![Total alerts][lgtm-image]][lgtm-url]
 
 [github-action-image]: https://github.com/fastics/components/workflows/Quality/badge.svg
 [github-action-url]: https://github.com/fastics/components/actions?query=workflow%3AQuality
@@ -15,9 +15,6 @@ that work for you.
 [david-url]: https://david-dm.org/fastics/components
 [lgtm-image]: https://flat.badgen.net/lgtm/alerts/g/fastics/components
 [lgtm-url]: https://lgtm.com/projects/g/fastics/components/alerts/
-[bundlesize-js-image]: https://img.badgesize.io/https:/unpkg.com/antd/dist/antd.min.js?label=antd.min.js&compression=gzip&style=flat-square
-[bundlesize-css-image]: https://img.badgesize.io/https:/unpkg.com/antd/dist/antd.min.css?label=antd.min.css&compression=gzip&style=flat-square
-[unpkg-js-url]: https://unpkg.com/browse/antd/dist/antd.min.js
 
 ## Demo
 
