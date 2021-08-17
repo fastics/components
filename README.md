@@ -5,8 +5,10 @@ This project aims to help by creating beautiful React components, without headac
 In fact, you only need to design your own custom styles and here we go ! You get working components
 that work for you.
 
-[![CI status][github-action-image]][github-action-url] [![david deps][david-image]][david-url] [![david devDeps][david-dev-image]][david-dev-url] [![Total alerts][lgtm-image]][lgtm-url]
+[![CI status][github-action-image]][github-action-url] [![codecov][codecov-image]][codecov-url][![david deps][david-image]][david-url] [![david devDeps][david-dev-image]][david-dev-url] [![Total alerts][lgtm-image]][lgtm-url]
 
+[codecov-image]: https://codecov.io/gh/fastics/components/branch/main/graph/badge.svg?token=2jeYgN8SRs
+[codecov-url]: https://codecov.io/gh/fastics/components/branch/main
 [github-action-image]: https://github.com/fastics/components/workflows/Quality/badge.svg
 [github-action-url]: https://github.com/fastics/components/actions?query=workflow%3AQuality
 [david-image]: https://img.shields.io/david/fastics/components?style=flat-square
