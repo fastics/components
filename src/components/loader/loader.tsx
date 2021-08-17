@@ -62,6 +62,9 @@ type LoaderComponent = FC<LoaderProps> & {
   Screen: typeof LoaderScreen;
 };
 
+/**
+ * A spinner for displaying loading state of a page or a section.
+ */
 export const Loader: LoaderComponent = ({
   color = Colors.blue[500],
   size = 16,

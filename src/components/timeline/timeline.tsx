@@ -27,7 +27,12 @@ export type TimelineComponent = FC<TimelineProps> & {
 };
 
 /**
- * You can limit the TimeLine space by wrapping it with a div.
+ * Vertical display timeline.
+ * You can limit the **[TimeLine]** space by wrapping it with a div.
+ *
+ * ### When To Use
+ * - When a series of information needs to be ordered by time (ascending or descending).
+ * - When you need a timeline to make a visual connection.
  *
  * @see TimelineItem
  */

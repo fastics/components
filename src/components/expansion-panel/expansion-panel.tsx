@@ -29,6 +29,12 @@ interface ExpansionPanelProps {
   classNames?: ExpansionPanelClassNames;
 }
 
+/**
+ * A content area which can be collapsed or expanded.
+ *
+ * It has a header and a body and can be either expanded or collapsed.
+ * The body of the panel is only visible when it is expanded.
+ */
 export const ExpansionPanel: FC<ExpansionPanelProps> = ({
   headerBuilder,
   children,

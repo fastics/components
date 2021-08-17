@@ -98,6 +98,9 @@ const useStyles = createUseStyles({
   },
 });
 
+/**
+ * Creates a scrollable, 2D array of widgets with a fixed number of tiles in the cross axis.
+ */
 export const GridViewCount: FC<GridViewCountProps> = ({ children, className, ...props }) => {
   const styles = useStyles(props);
 

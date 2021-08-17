@@ -69,6 +69,9 @@ const useStyles = createUseStyles({
   }),
 });
 
+/**
+ * A component that displays a horizontal row of tabs.
+ */
 export const Tabs: TabsComponent = ({
   defaultActiveKey,
   children,

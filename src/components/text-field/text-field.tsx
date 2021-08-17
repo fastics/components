@@ -30,6 +30,9 @@ const StyledTextField = styled(TextFieldBase)`
   ${styles.baseStyles}
 `;
 
+/**
+ * A **TextField** lets the user enter text, either with hardware keyboard or with an onscreen keyboard.
+ */
 export const TextField: FC<TextFieldProps> = (props) => <StyledTextField {...props} />;
 
 export default TextField;

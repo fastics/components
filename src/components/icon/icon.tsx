@@ -51,12 +51,6 @@ export const IconInner: FC<IconInnerProps> = ({ className, icon, semanticLabel }
   );
 };
 
-/**
- * A graphical icon widget drawn with a glyph.
- * It used Material-Icons font. Don't forget to include Material CSS in your app !
- * @example
- * <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
- */
 const StyledIcon = styled(IconInner)<IconProps>`
   ${styles.baseStyles}
   color: ${(p) => p.color?.toRGBA() || Colors.black.toRGBA()};
@@ -64,6 +58,18 @@ const StyledIcon = styled(IconInner)<IconProps>`
   font-size: ${(p) => p.size || 24}px;
 `;
 
+/**
+ * A graphical **Icon** widget drawn with a glyph.
+ *
+ * Icons are not interactive. For an interactive icon, consider **IconButton**.
+ *
+ * It uses Material-Icons font. Don't forget to include Material CSS in your app !
+ * @example
+ * <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" />
+ *
+ * @see IconButton
+ * @see Icons
+ */
 export const Icon: FC<IconProps> = (props) => <StyledIcon {...props} />;
 
 export default Icon;

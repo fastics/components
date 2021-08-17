@@ -50,6 +50,12 @@ const useValueStyles = createUseStyles({
   }),
 });
 
+/**
+ * A widget that shows progress along a line.
+ *
+ * @example
+ * <LinearProgressIndicator value={40} />
+ */
 export const LinearProgressIndicator: FC<LinearProgressIndicatorProps> = ({ value, ...rest }) => {
   if (value > 100)
     throw new RangeError('[LinearProgressIndicator] - The value should not exceed 100');

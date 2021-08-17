@@ -134,6 +134,9 @@ const getIcon = (status?: ResultStatus, icon?: ReactElement<IconProps>, iconSize
   }
 };
 
+/**
+ * Used to feed back the results of a series of operational tasks.
+ */
 export const Result: FC<ResultProps> = ({
   status,
   title,

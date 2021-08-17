@@ -13,9 +13,15 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   controller?: UseTextEditingController;
 }
 
+/**
+ * Basic **Input**.
+ * Can be `controlled` by passing `controller` prop.
+ *
+ * @see UseTextEditingController
+ */
 export const Input: FC<InputProps> = ({ controller, ...props }) => {
-  const _controller2 = useTextEditingController({ listenValue: false });
-  const _controller = controller || _controller2;
+  const _defaultController = useTextEditingController({ listenValue: false });
+  const _controller = controller || _defaultController;
 
   return (
     <input

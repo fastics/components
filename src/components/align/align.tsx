@@ -75,6 +75,9 @@ const useStyles = createUseStyles({
   }),
 });
 
+/**
+ * Use this component to align items in a container.
+ */
 export const Align: React.FC<AlignProps> = ({ alignment, children }) => {
   const styles = useStyles({ alignment });
 

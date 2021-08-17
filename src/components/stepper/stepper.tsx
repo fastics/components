@@ -62,6 +62,12 @@ interface StepperProps {
 
 type StepperComponent = FC<StepperProps> & { Item: typeof StepperItem };
 
+/**
+ * A **Stepper** that displays progress through a sequence of steps.
+ *
+ * Steppers are particularly useful in the case of forms where one step requires the completion of another one,
+ * or where multiple steps need to be completed in order to submit the whole form.
+ */
 export const Stepper: StepperComponent = ({
   children,
   current,
