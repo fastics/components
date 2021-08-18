@@ -28,3 +28,9 @@ it('should render successfully', () => {
     </DataTable>,
   );
 });
+
+it('DataColumn should return null', () => {
+  const DataColumn = buildDataColumn<Data>();
+
+  expect(render(<DataColumn label="Name" value="name" />).container.firstChild).toBe(null);
+});
