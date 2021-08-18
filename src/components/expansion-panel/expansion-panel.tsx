@@ -54,6 +54,7 @@ export const ExpansionPanel: FC<ExpansionPanelProps> = ({
         {headerBuilder({ isExpanded })}
 
         <IconButton
+          data-testid="toggle"
           onPress={toggleExpand}
           icon={<Icon icon={Icons.keyboard_arrow_down} className={classes.arrow} />}
           padding={Padding.all(24)}
