@@ -110,6 +110,7 @@ export const Toggle: FC<ToggleProps> = ({
 
   return (
     <button
+      data-testid="toggle"
       type="button"
       role="switch"
       aria-checked={value}

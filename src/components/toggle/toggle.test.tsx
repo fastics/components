@@ -1,7 +1,17 @@
-import { render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 
 import Toggle from './toggle';
 
-it('should render successfully', () => {
-  render(<Toggle />);
+describe('toggle', () => {
+  it('should render successfully', () => {
+    render(<Toggle />);
+  });
+
+  it('should handle click', () => {
+    const { getByTestId } = render(<Toggle />);
+
+    act(() => {
+      fireEvent.click(getByTestId('toggle'));
+    });
+  });
 });
