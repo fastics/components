@@ -34,6 +34,7 @@ export const Carousel: FC<CarouselProps> = ({ children, gap = 12 }) => {
     <div className={classes.wrapper}>
       {leftIndicator && (
         <IconButton
+          data-testid="left"
           className={classes.button}
           onPress={onScrollLeft}
           icon={<Icon icon={Icons.chevron_left} size={16} color={Colors.grey[500]} />}
@@ -50,6 +51,7 @@ export const Carousel: FC<CarouselProps> = ({ children, gap = 12 }) => {
 
       {rightIndicator && (
         <IconButton
+          data-testid="right"
           className={classes.button}
           onPress={onScrollRight}
           icon={<Icon icon={Icons.chevron_right} size={16} color={Colors.grey[500]} />}

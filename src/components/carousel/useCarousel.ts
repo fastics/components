@@ -35,7 +35,7 @@ const useCarousel = (children: JSX.Element | JSX.Element[]) => {
     );
 
     itemRefs.forEach((item) => {
-      observer.observe(item as HTMLElement);
+      observer.observe(item);
     });
 
     return () => {

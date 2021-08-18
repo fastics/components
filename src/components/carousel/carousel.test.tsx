@@ -1,3 +1,5 @@
+import 'intersection-observer';
+
 import { render } from '@testing-library/react';
 import React, { CSSProperties } from 'react';
 
@@ -17,27 +19,30 @@ const styles: Record<string, CSSProperties> = {
 };
 
 describe('Carousel', function () {
-  beforeEach(() => {
-    // IntersectionObserver isn't available in test environment
-    const mockIntersectionObserver = jest.fn();
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    });
-    window.IntersectionObserver = mockIntersectionObserver;
-  });
-
   it('should render successfully', () => {
     render(
       <Carousel>
-        <div style={styles.element}>Example 1</div>
-        <div style={styles.element}>Example 2</div>
-        <div style={styles.element}>Example 3</div>
-        <div style={styles.element}>Example 4</div>
-        <div style={styles.element}>Example 5</div>
-        <div style={styles.element}>Example 6</div>
-        <div style={styles.element}>Example 7</div>
+        <div key={1} style={styles.element}>
+          Example 1
+        </div>
+        <div key={2} style={styles.element}>
+          Example 2
+        </div>
+        <div key={3} style={styles.element}>
+          Example 3
+        </div>
+        <div key={4} style={styles.element}>
+          Example 4
+        </div>
+        <div key={5} style={styles.element}>
+          Example 5
+        </div>
+        <div key={6} style={styles.element}>
+          Example 6
+        </div>
+        <div key={7} style={styles.element}>
+          Example 7
+        </div>
       </Carousel>,
     );
   });
