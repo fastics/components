@@ -75,4 +75,8 @@ margin-bottom: 32px;`);
       expect(left).toEqual(0);
     });
   });
+
+  it('.toString should return correct value', () => {
+    expect(Margin.all(12).toString()).toBe('Margin(top: 12, right: 12, bottom: 12, left: 12)');
+  });
 });
