@@ -145,21 +145,22 @@ export const DropdownButton: FC<DropdownButtonProps> = ({
   const handleOpen = useCallback(() => {
     setIsOpen(true);
 
-    setTimeout(() => {
-      if (!value) return;
-      /**
-       * The part below aims to automatically scroll to selected value.
-       * Cannot make it work for now.
-       */
-
-      // const selectedLi = ulRef.current?.querySelector(`#dropdown-value-${value}`);
-      // const { top = 0, height = 0 } = selectedLi?.getBoundingClientRect() || {};
-      // ulRef.current?.scrollTo({ top: top - height * 2 });
-    }, 200);
-  }, [value]);
+    /**
+     * The part below aims to automatically scroll to selected value.
+     * Cannot make it work for now.
+     */
+    // setTimeout(() => {
+    //   if (!value) return;
+    //
+    //   const selectedLi = ulRef.current?.querySelector(`#dropdown-value-${value}`);
+    //   const { top = 0, height = 0 } = selectedLi?.getBoundingClientRect() || {};
+    //   ulRef.current?.scrollTo({ top: top - height * 2 });
+    // }, 200);
+  }, []);
 
   return (
     <button
+      data-testid="button"
       ref={ref}
       className={classnames(
         classes.wrapper,
@@ -191,6 +192,7 @@ export const DropdownButton: FC<DropdownButtonProps> = ({
         {items.map((item) => (
           <li
             key={item.value}
+            data-testid={item.value}
             onClick={handleSelect(item.value)}
             id={`dropdown-value-${item.value}`}
             className={classnames(
