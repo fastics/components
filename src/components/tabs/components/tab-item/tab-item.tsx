@@ -41,6 +41,7 @@ export interface InnerTabItemProps extends Omit<TabItemProps, 'key'> {
   ref: RefObject<HTMLDivElement>;
   onChange: () => void;
   active: boolean;
+  index: number;
 }
 
 const useStyles = createUseStyles({
@@ -51,7 +52,7 @@ const useStyles = createUseStyles({
 });
 
 export const InnerTabItem = forwardRef<HTMLDivElement, InnerTabItemProps>(
-  ({ name, onChange, active, icon, inactiveColor }, ref) => {
+  ({ name, onChange, active, icon, inactiveColor, index }, ref) => {
     const styles = useStyles({ inactiveColor });
     return (
       <div
@@ -59,6 +60,7 @@ export const InnerTabItem = forwardRef<HTMLDivElement, InnerTabItemProps>(
         ref={ref}
         onClick={onChange}
         role="tab"
+        data-testid={index}
       >
         {icon && <Icon icon={icon} className={classes.icon} size={20} />}
         {name}

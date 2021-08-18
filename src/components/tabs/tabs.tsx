@@ -99,6 +99,7 @@ export const Tabs: TabsComponent = ({
     <div className={classnames(classes.wrapper, styles.wrapper)} role="tablist">
       {Children.map(children, (child, index) => (
         <InnerTabItem
+          index={index}
           ref={itemRef(index)}
           onChange={handleTabChange(index)}
           active={activeIndex === index}
